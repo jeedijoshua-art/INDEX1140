@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Box Model</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="boxmodel.png" rel="icon" type="image/png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            padding: 32px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 24px;
+        }
+        ul {
+            margin-bottom: 24px;
+        }
+        .sub-section {
+            background: #e3eafc;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 18px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .box-demo {
+            width: 200px;
+            height: 100px;
+            background: #e3eafc;
+            border: 4px solid #6fa8dc;
+            padding: 16px;
+            margin: 24px auto;
+            box-sizing: content-box;
+        }
+        .box-demo-borderbox {
+            box-sizing: border-box;
+            background: #93c47d;
+            border: 4px solid #38761d;
+        }
+        .box-demo-widthheight {
+            width: 250px;
+            height: 80px;
+            background: #ffe599;
+            border: 2px dashed #b7b7b7;
+            margin: 16px auto;
+            text-align: center;
+            line-height: 80px;
+        }
+        .box-demo-padding {
+            width: 180px;
+            height: 60px;
+            background: #d9ead3;
+            border: 2px solid #6fa8dc;
+            padding: 24px;
+            margin: 16px auto;
+            text-align: center;
+        }
+        .box-demo-border {
+            width: 180px;
+            height: 60px;
+            background: #fff2cc;
+            border: 6px double #f6b26b;
+            margin: 16px auto;
+            text-align: center;
+            line-height: 60px;
+        }
+        .box-demo-margin {
+            width: 180px;
+            height: 60px;
+            background: #cfe2f3;
+            border: 2px solid #6fa8dc;
+            margin: 32px auto 32px auto;
+            text-align: center;
+            line-height: 60px;
+        }
+
+         .dm-serif-text-regular {
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="dm-serif-text-regular">
+    <div class="container">
+        <h1>CSS Box Model</h1>
+        <p>The CSS Box Model describes how elements are rendered and spaced on a webpage. Each element is a rectangular box consisting of content, padding, border, and margin.</p>
+        <ul>
+            <li><strong>Content</strong> – The actual text or image.</li>
+            <li><strong>Padding</strong> – Space between content and border.</li>
+            <li><strong>Border</strong> – The edge around the padding.</li>
+            <li><strong>Margin</strong> – Space outside the border.</li>
+        </ul>
+
+        <div class="sub-section">
+            <h2>1. Overview &amp; box-sizing</h2>
+            <p>
+                The <code>box-sizing</code> property controls how the total width and height of an element are calculated.<br>
+                <strong>content-box</strong> (default): width/height include only the content.<br>
+                <strong>border-box</strong>: width/height include content, padding, and border.
+            </p>
+            <div class="box-demo">
+                Content Box<br>
+                <code>box-sizing: content-box;</code>
+            </div>
+            <div class="box-demo box-demo-borderbox">
+                Border Box<br>
+                <code>box-sizing: border-box;</code>
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h2>2. Width &amp; Height</h2>
+            <p>
+                <code>width</code> and <code>height</code> set the size of the content area.<br>
+                You can use units like px, %, em, rem, etc.<br>
+                <code>width: 250px; height: 80px;</code>
+            </p>
+            <div class="box-demo-widthheight">
+                Width &amp; Height Example
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h2>3. Padding</h2>
+            <p>
+                Padding adds space inside the element, between the content and the border.<br>
+                You can set padding for each side: <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code>, <code>padding-left</code>.<br>
+                <code>padding: 24px;</code>
+            </p>
+            <div class="box-demo-padding">
+                Padding Example
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h2>4. Border</h2>
+            <p>
+                Border wraps around the padding and content.<br>
+                You can set border style, width, and color.<br>
+                <code>border: 6px double #f6b26b;</code>
+            </p>
+            <div class="box-demo-border">
+                Border Example
+            </div>
+        </div>
+
+        <div class="sub-section">
+            <h2>5. Margin</h2>
+            <p>
+                Margin creates space outside the border, separating elements from others.<br>
+                You can set margin for each side: <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>, <code>margin-left</code>.<br>
+                <code>margin: 32px auto;</code>
+            </p>
+            <div class="box-demo-margin">
+                Margin Example
+            </div>
+        </div>
+
+        <!--<h2>Sample CSS</h2>
+        <div style="background:#f4f4f4; padding:12px; border-radius:8px; margin:24px auto; max-width:500px;">
+            <code>
+                .box {<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;height: 100px;<br>
+                &nbsp;&nbsp;padding: 16px;<br>
+                &nbsp;&nbsp;border: 4px solid #6fa8dc;<br>
+                &nbsp;&nbsp;margin: 24px auto;<br>
+                &nbsp;&nbsp;box-sizing: content-box;<br>
+                }<br><br>
+                .box-borderbox {<br>
+                &nbsp;&nbsp;box-sizing: border-box;<br>
+                }
+            </code>
+        </div>-->
+    </div>
+</body>
+</html>

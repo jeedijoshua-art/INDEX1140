@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Text Styling</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="textstyle.png" rel="icon" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        p {
+            color: #444;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        .sub-section {
+            background-color: #eef3ff;
+            padding: 10px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 4px;
+        }
+        .demo-text {
+            margin: 8px 0;
+        }
+        .demo-color {
+            color: red;
+        }
+        .demo-align {
+            text-align: center;
+        }
+        .demo-transform {
+            text-transform: uppercase;
+        }
+        .demo-decoration {
+            text-decoration: underline;
+        }
+        .demo-shadow {
+            /* Shadows skipped for basic CSS */
+            font-style: italic;
+        }
+        .demo-spacing {
+            letter-spacing: 3px;
+            word-spacing: 10px;
+        }
+        .demo-indent {
+            text-indent: 30px;
+        }
+        .demo-wrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Text Styling</h1>
+        <p>CSS provides many properties to style and format text on your webpage. Here are the main text styling options:</p>
+        <ul>
+            <li><strong>Color</strong></li>
+            <li><strong>Alignment</strong></li>
+            <li><strong>Text Transformation</strong></li>
+            <li><strong>Text Decoration</strong></li>
+            <li><strong>Letter &amp; Word Spacing</strong></li>
+            <li><strong>Text Indent</strong></li>
+            <li><strong>White Space &amp; Wrapping</strong></li>
+        </ul>
+
+        <div class="sub-section">
+            <h2>Color</h2>
+            <p>Change the color of text using <code>color</code>:</p>
+            <div class="demo-text demo-color">This text is red. <code>color: red;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>Alignment</h2>
+            <p>Align text with <code>text-align</code>:</p>
+            <div class="demo-text demo-align">This text is centered. <code>text-align: center;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>Text Transformation</h2>
+            <p>Transform text case with <code>text-transform</code>:</p>
+            <div class="demo-text demo-transform">This text is uppercase. <code>text-transform: uppercase;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>Text Decoration</h2>
+            <p>Add lines or effects with <code>text-decoration</code>:</p>
+            <div class="demo-text demo-decoration">This text is underlined. <code>text-decoration: underline;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>Letter &amp; Word Spacing</h2>
+            <p>Adjust spacing between letters and words:</p>
+            <div class="demo-text demo-spacing">Spaced text. <code>letter-spacing: 3px; word-spacing: 10px;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>Text Indent</h2>
+            <p>Indent the first line of text with <code>text-indent</code>:</p>
+            <div class="demo-text demo-indent">This text is indented. <code>text-indent: 30px;</code></div>
+        </div>
+
+        <div class="sub-section">
+            <h2>White Space &amp; Wrapping</h2>
+            <p>Control how text wraps with <code>white-space</code>:</p>
+            <div class="demo-text demo-wrap">This text will not wrap to the next line. <code>white-space: nowrap;</code></div>
+        </div>
+    </div>
+</body>
+</html>

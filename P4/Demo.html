@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Demo Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css.png" rel="icon" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .intro h2 {
+            color: #444;
+            margin-bottom: 10px;
+        }
+        
+        .intro p {
+            color: #666;
+            font-size: 16px;
+        }
+        
+        .topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .topic-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .topic-btn:hover {
+            background: #45a049;
+        }
+        
+        .topic-btn:nth-child(2) { background: #2196F3; }
+        .topic-btn:nth-child(2):hover { background: #1976D2; }
+        
+        .topic-btn:nth-child(3) { background: #FF9800; }
+        .topic-btn:nth-child(3):hover { background: #F57C00; }
+        
+        .topic-btn:nth-child(4) { background: #9C27B0; }
+        .topic-btn:nth-child(4):hover { background: #7B1FA2; }
+        
+        .topic-btn:nth-child(5) { background: #F44336; }
+        .topic-btn:nth-child(5):hover { background: #D32F2F; }
+        
+        @media (max-width: 600px) {
+            .topics {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .topic-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Main Topics</h1>
+    
+    <div class="container">
+        <div class="intro">
+            <h2>Learn CSS Basics</h2>
+            <p>Click on any topic below to start learning</p>
+        </div>
+        
+        <div class="topics">
+            <a href="selectors.html" class="topic-btn">Selectors</a>
+            <a href="layout.html" class="topic-btn">Layouts</a>
+            <a href="boxmodel.html" class="topic-btn">Box Model</a>
+            <a href="textstyling.html" class="topic-btn">Text Styling</a>
+            <a href="fontstyling.html" class="topic-btn">Font Styling</a>
+        </div>
+    </div>
+</body>
+</html>

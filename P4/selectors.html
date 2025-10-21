@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Selectors</title>
+    <link href="selectors.png" rel="icon" type="image/png">`    
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px #0000;
+            padding: 32px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .selector-example {
+            background: #e3eafc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            font-size: 1em;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        ul {
+            margin-bottom: 24px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .dm-serif-text-regular {
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body class="dm-serif-text-regular">
+    <div class="container">
+        <!-- Removed back-link -->
+        <h1>CSS Selectors</h1>
+        <p>Selectors are patterns used to select the elements you want to style.</p>
+        <ul>
+            <li><strong>Universal Selector</strong>: <code>*</code></li>
+            <li><strong>Type Selector</strong>: <code>p</code>, <code>h1</code></li>
+            <li><strong>Class Selector</strong>: <code>.classname</code></li>
+            <li><strong>ID Selector</strong>: <code>#idname</code></li>
+            <li><strong>Attribute Selector</strong>: <code>[type="text"]</code></li>
+            <li><strong>Descendant Selector</strong>: <code>div p</code></li>
+            <li><strong>Child Selector</strong>: <code>ul > li</code></li>
+            <li><strong>Adjacent Sibling Selector</strong>: <code>h2 + p</code></li>
+            <li><strong>General Sibling Selector</strong>: <code>h2 ~ p</code></li>
+            <li><strong >Pseudo-class Selector</strong>: <code>a:hover</code>, <code>li:first-child</code></li>
+            <li><strong>Pseudo-element Selector</strong>: <code>p::first-line</code>, <code>h1::after</code></li>
+        </ul>
+        <h2>Examples</h2>
+        <div class="selector-example">
+            <strong>Universal Selector:</strong><br>
+            •Selects all elements on a page.<br>
+            •Useful for applying global styles.<br>
+
+           <strong> * { margin: 0; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Type Selector:</strong><br>
+           •Selects elements by their HTML tag name.<br>
+            <strong>p { color: blue; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Class Selector:</strong><br>
+            •Targets elements with a given class.<br>
+            •Can be reused on multiple elements.<br>
+            <strong>.highlight { background: yellow; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>ID Selector:</strong><br>
+            •Targets elements with a given ID.<br>
+            •IDs must be unique within a page.<br>
+            <strong>#main-title { font-size: 2em; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Attribute Selector:</strong><br>
+            •Apply the same style to multiple elements at once.<br>
+            <strong>Code: input[type="text"] { border: 1px solid #333; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Descendant Selector:</strong><br>
+            •Selects elements that are descendants of a specified element.<br>
+            <strong>Code: div p { margin-bottom: 10px; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Child Selector:</strong><br>
+            •Selects elements that are direct children of a specified element.<br>
+            <strong>Code: ul > li { list-style: square; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Adjacent Sibling Selector:</strong><br>
+            •Selects the element that comes immediately after another element.<br>
+            <strong>Code: h2 + p { font-weight: bold; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>General Sibling Selector:</strong><br>
+            •Selects elements that are siblings of a specified element.<br>
+            <strong>Code: h2 ~ p { color: green; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Pseudo-class Selector:</strong><br>
+            •Apply styles to elements in a special state (like hover, visited, focus).<br>
+            <strong>Code: a:hover { color: red; }</strong>
+        </div>
+        <div class="selector-example">
+            <strong>Pseudo-element Selector:</strong><br>
+            •Style a part of an element (like first letter, first line).<br>
+            <strong>Code: p::first-line { font-weight: bold; }</strong>
+        </div>
+    </div>
+</body>
+</html>

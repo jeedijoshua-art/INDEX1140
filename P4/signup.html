@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup For Better Results</title>
+  <link href="signup.png" rel="icon">
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #461220;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: white;
+      border: 1px solid #eeabc4;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #461220;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"] {
+      width: 95%;
+      padding: 8px;
+      border: 1px solid #eeabc4;
+      margin-bottom: 15px;
+    }
+
+    .gender-group {
+      margin-bottom: 15px;
+    }
+
+    .gender-group label {
+      font-weight: normal;
+      margin-right: 15px;
+    }
+
+    button[type="submit"] {
+      background-color: #e76f51;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #461220;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><strong><ins>Signup For Better Results</ins></strong></h1>
+    <form action="Thankyou.html" method="get">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label>Select the Gender:</label>
+        <div class="gender-group">
+          <label><input type="radio" name="gender" value="male" required> Male</label>
+          <label><input type="radio" name="gender" value="female"> Female</label>
+        </div>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
