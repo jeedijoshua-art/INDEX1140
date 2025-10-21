@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Shrink Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; width: 300px; height: 80px; }
+    .flex-item { height: 60px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; }
+    .shrink-0 { flex-shrink: 0; } .shrink-1 { flex-shrink: 1; } .shrink-2 { flex-shrink: 2; } .shrink-3 { flex-shrink: 3; }
+  </style>
+</head>
+<body>
+  <h1>Flex Shrink</h1>
+  
+  <div class="demo-section">
+    <h2>flex-shrink: 1 (default) - Container: 300px</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 shrink-1" style="width: 150px;">shrink: 1</div><div class="flex-item item2 shrink-1" style="width: 150px;">shrink: 1</div><div class="flex-item item3 shrink-1" style="width: 150px;">shrink: 1</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex-shrink: 0, 1, 2 - Container: 300px</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 shrink-0" style="width: 150px;">shrink: 0</div><div class="flex-item item2 shrink-1" style="width: 150px;">shrink: 1</div><div class="flex-item item3 shrink-2" style="width: 150px;">shrink: 2</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex-shrink: 1, 2, 3 - Container: 300px</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 shrink-1" style="width: 150px;">shrink: 1</div><div class="flex-item item2 shrink-2" style="width: 150px;">shrink: 2</div><div class="flex-item item3 shrink-3" style="width: 150px;">shrink: 3</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

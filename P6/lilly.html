@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LILLY's Kitchen | Positioned Recipes</title>
+  <link rel="icon" href="mom.png">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+
+    /* Header fixed */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      border-bottom: 2px solid black;
+      padding: 10px;
+      text-align: center;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    /* Contact icons */
+    .contact-icons {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    .contact-icons img {
+      width: 50px;
+      height: 50px;
+    }
+
+    /* Intro message */
+    #intro {
+      width: 300px;
+      color: white;
+      padding: 10px;
+      border: 2px solid black;
+      margin: 20px;
+      position: fixed;
+      top: 70px;
+      left: 10px;
+      background-color: #461220;
+      font-size: 14px;
+      z-index: 999;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 140px auto 40px auto;
+      padding: 10px;
+    }
+
+    /* Recipe index sticky */
+    .recipe-index {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid black;
+      position: sticky;
+      top: 60px;
+      z-index: 500;
+    }
+    .recipe-btn {
+      background-color: #EA9E8D;
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+
+    /* Recipe container → horizontal layout */
+    .recipe-grid {
+      display: flex;
+      flex-wrap: wrap;   /* wrap to next line if needed */
+      gap: 20px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    /* Recipe card */
+    .recipe {
+      flex: 1 1 250px;    /* min card width */
+      max-width: 280px;
+      border: 1px solid black;
+      background-color: white;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .recipe h2 {
+      margin-top: 0;
+      color: #ea5455;
+      font-size: 18px;
+    }
+    .recipe img {
+      width: 200px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .recipe-content {
+      text-align: left;
+      font-size: 14px;
+    }
+    .recipe-content h3 {
+      margin-bottom: 5px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LILLY's Kitchen</h1>
+    <div class="contact-icons">
+      <a href="mailto:headhunter1608@email.com"><img src="mailme.png" alt="Email"></a>
+      <a href="tel:9949728819"><img src="callme.png" alt="Call"></a>
+    </div>
+  </header>
+
+  <h2 id="intro">Hello everyone, these are my recipes<br>Hope you enjoy!</h2>
+
+  <div class="container">
+    <div class="recipe-index">
+      <a href="#chickenfry" class="recipe-btn">Chicken Fry</a>
+      <a href="#gulabjamun" class="recipe-btn">Gulab Jamun</a>
+      <a href="#mangolassi" class="recipe-btn">Mango Lassi</a>
+      <a href="#chickencutlet" class="recipe-btn">Chicken Cutlet</a>
+    </div>
+
+    <!-- Horizontal Recipe Cards -->
+    <div class="recipe-grid">
+      <div class="recipe" id="chickenfry">
+        <h2>Recipe 1: Chicken Fry</h2>
+        <img src="chickenfry.png" alt="Chicken Fry">
+        <div class="recipe-content">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>500g chicken</li>
+            <li>2 tbsp chili powder</li>
+            <li>1 tbsp turmeric</li>
+            <li>1 tbsp salt</li>
+            <li>Oil for frying</li>
+          </ul>
+          <h3>Steps:</h3>
+          <ol>
+            <li>Marinate chicken with spices.</li>
+            <li>Heat oil in pan.</li>
+            <li>Deep fry until golden brown.</li>
+            <li>Serve hot.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="recipe" id="gulabjamun">
+        <h2>Recipe 2: Gulab Jamun</h2>
+        <img src="gulabjamun.png" alt="Gulab Jamun">
+        <div class="recipe-content">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>1 cup milk powder</li>
+            <li>2 tbsp flour</li>
+            <li>1 tbsp ghee</li>
+            <li>Sugar syrup</li>
+            <li>Oil for frying</li>
+          </ul>
+          <h3>Steps:</h3>
+          <ol>
+            <li>Mix ingredients into dough.</li>
+            <li>Shape into small balls.</li>
+            <li>Fry until golden brown.</li>
+            <li>Soak in sugar syrup.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="recipe" id="mangolassi">
+        <h2>Recipe 3: Mango Lassi</h2>
+        <img src="mangolassi.png" alt="Mango Lassi">
+        <div class="recipe-content">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>2 ripe mangoes</li>
+            <li>1 cup yogurt</li>
+            <li>2 tbsp sugar</li>
+            <li>Ice cubes</li>
+          </ul>
+          <h3>Steps:</h3>
+          <ol>
+            <li>Peel and chop mangoes.</li>
+            <li>Blend mangoes with yogurt, sugar, and ice.</li>
+            <li>Serve chilled in tall glasses.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="recipe" id="chickencutlet">
+        <h2>Recipe 4: Chicken Cutlet</h2>
+        <img src="chickencutlet.png" alt="Chicken Cutlet">
+        <div class="recipe-content">
+          <h3>Ingredients:</h3>
+          <ul>
+            <li>500g boneless chicken</li>
+            <li>1 cup yogurt</li>
+            <li>Indian masalas</li>
+            <li>Maida flour</li>
+            <li>Oil</li>
+            <li>Eggs</li>
+            <li>Bread crumbs</li>
+            <li>Parmesan cheese</li>
+            <li>Italian herbs</li>
+          </ul>
+          <h3>Steps:</h3>
+          <ol>
+            <li>Dredge chicken in flour, then egg, then breadcrumbs.</li>
+            <li>Rest for 10 min before frying.</li>
+            <li>Fry or air fry until golden brown.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

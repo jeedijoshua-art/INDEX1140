@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; height: 80px; }
+    .flex-item { width: 80px; height: 60px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; } .item4 { background: #9b59b6; }
+    .order-minus-1 { order: -1; } .order-0 { order: 0; } .order-1 { order: 1; } .order-2 { order: 2; } .order-3 { order: 3; }
+  </style>
+</head>
+<body>
+  <h1>Order Property</h1>
+  
+  <div class="demo-section">
+    <h2>Default order (0, 0, 0, 0)</h2>
+    <div class="flex-container">
+      <div class="flex-item item1">Item 1</div><div class="flex-item item2">Item 2</div><div class="flex-item item3">Item 3</div><div class="flex-item item4">Item 4</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>order: 3, 1, 2, 0</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 order-3">Item 1 (order: 3)</div><div class="flex-item item2 order-1">Item 2 (order: 1)</div><div class="flex-item item3 order-2">Item 3 (order: 2)</div><div class="flex-item item4 order-0">Item 4 (order: 0)</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>order: -1, 0, 1, 2</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 order-minus-1">Item 1 (order: -1)</div><div class="flex-item item2 order-0">Item 2 (order: 0)</div><div class="flex-item item3 order-1">Item 3 (order: 1)</div><div class="flex-item item4 order-2">Item 4 (order: 2)</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

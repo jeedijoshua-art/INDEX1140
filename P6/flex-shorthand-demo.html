@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Shorthand Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; height: 80px; }
+    .flex-item { height: 60px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 11px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; }
+    .flex-1 { flex: 1; } .flex-2 { flex: 2; } .flex-1-0-100 { flex: 1 0 100px; } .flex-0-1-auto { flex: 0 1 auto; } .flex-none { flex: none; }
+  </style>
+</head>
+<body>
+  <h1>Flex Shorthand</h1>
+  
+  <div class="demo-section">
+    <h2>flex: 1 (equivalent to flex: 1 1 0)</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 flex-1">flex: 1</div><div class="flex-item item2 flex-1">flex: 1</div><div class="flex-item item3 flex-1">flex: 1</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex: 1, 2, 1</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 flex-1">flex: 1</div><div class="flex-item item2 flex-2">flex: 2</div><div class="flex-item item3 flex-1">flex: 1</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex: 1 0 100px, 0 1 auto, 1 0 100px</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 flex-1-0-100">flex: 1 0 100px</div><div class="flex-item item2 flex-0-1-auto">flex: 0 1 auto</div><div class="flex-item item3 flex-1-0-100">flex: 1 0 100px</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex: none (equivalent to flex: 0 0 auto)</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 flex-none">flex: none</div><div class="flex-item item2 flex-1">flex: 1</div><div class="flex-item item3 flex-none">flex: none</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

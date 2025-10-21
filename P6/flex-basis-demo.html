@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Basis Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; height: 80px; }
+    .flex-item { height: 60px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; }
+    .basis-auto { flex-basis: auto; } .basis-100 { flex-basis: 100px; } .basis-200 { flex-basis: 200px; } .basis-50percent { flex-basis: 50%; } .basis-content { flex-basis: content; }
+  </style>
+</head>
+<body>
+  <h1>Flex Basis</h1>
+  
+  <div class="demo-section">
+    <h2>flex-basis: auto (default)</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 basis-auto">basis: auto</div><div class="flex-item item2 basis-auto">basis: auto</div><div class="flex-item item3 basis-auto">basis: auto</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex-basis: 100px, 200px, auto</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 basis-100">basis: 100px</div><div class="flex-item item2 basis-200">basis: 200px</div><div class="flex-item item3 basis-auto">basis: auto</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex-basis: 50%, auto, auto</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 basis-50percent">basis: 50%</div><div class="flex-item item2 basis-auto">basis: auto</div><div class="flex-item item3 basis-auto">basis: auto</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>flex-basis: content, auto, auto</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 basis-content">basis: content</div><div class="flex-item item2 basis-auto">basis: auto</div><div class="flex-item item3 basis-auto">basis: auto</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

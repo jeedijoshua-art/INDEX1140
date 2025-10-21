@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Align Self Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; height: 120px; }
+    .flex-item { width: 80px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 11px; }
+    .item1 { background: #e74c3c; height: 40px; } .item2 { background: #27ae60; height: 60px; } .item3 { background: #f39c12; height: 50px; }
+    .align-self-auto { align-self: auto; } .align-self-flex-start { align-self: flex-start; } .align-self-center { align-self: center; } .align-self-flex-end { align-self: flex-end; } .align-self-stretch { align-self: stretch; } .align-self-baseline { align-self: baseline; }
+  </style>
+</head>
+<body>
+  <h1>Align Self</h1>
+  
+  <div class="demo-section">
+    <h2>align-self: auto (inherits from align-items: center)</h2>
+    <div class="flex-container" style="align-items: center;">
+      <div class="flex-item item1 align-self-auto">auto</div><div class="flex-item item2 align-self-auto">auto</div><div class="flex-item item3 align-self-auto">auto</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-self: flex-start, center, flex-end</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 align-self-flex-start">flex-start</div><div class="flex-item item2 align-self-center">center</div><div class="flex-item item3 align-self-flex-end">flex-end</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-self: stretch, baseline, center</h2>
+    <div class="flex-container">
+      <div class="flex-item item1 align-self-stretch" style="height: auto;">stretch</div><div class="flex-item item2 align-self-baseline">baseline</div><div class="flex-item item3 align-self-center">center</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>Mixed align-self values</h2>
+    <div class="flex-container" style="align-items: flex-start;">
+      <div class="flex-item item1 align-self-auto">auto</div><div class="flex-item item2 align-self-flex-end">flex-end</div><div class="flex-item item3 align-self-center">center</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

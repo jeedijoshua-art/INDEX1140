@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flex Layout – Introduction & Properties</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 0.2rem 0.4rem;
+      font-family: Consolas, monospace;
+    }
+    ul {
+      margin: 1rem 0 2rem 1.2rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Flex Layout</h1>
+
+  <section id="introduction">
+    <h2>Introduction</h2>
+    <p>
+      Flexbox is a one-dimensional CSS layout model designed to distribute space 
+      along a single axis—either as a row or a column. It simplifies tasks like 
+      centering, spacing, and ordering items, even when their size is unknown or dynamic.
+      To enable Flexbox, set <code>display: flex</code> (or <code>inline-flex</code>) 
+      on a container and then control alignment and distribution with a handful of properties.
+    </p>
+  </section>
+
+  <section id="container-properties">
+    <h2>Flex Container Properties</h2>
+    <ul>
+      <li>
+        <code>display</code>: <code>flex</code> | <code>inline-flex</code>  <a href="flex-display-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex-direction</code>: <code>row</code> | <code>row-reverse</code> | 
+        <code>column</code> | <code>column-reverse</code>  <a href="flex-direction-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex-wrap</code>: <code>nowrap</code> | <code>wrap</code> | 
+        <code>wrap-reverse</code> <a href="flex-wrap-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex-flow</code>: <em>shorthand for</em> 
+        <code>flex-direction</code> &amp; <code>flex-wrap</code> 
+        (<code>&lt;direction&gt; &lt;wrap&gt;</code>) <a href="flex-flow-demo.html">Link</a>
+      </li>
+      <li>
+        <code>justify-content</code>: <code>flex-start</code> | <code>center</code> | 
+        <code>flex-end</code> | <code>space-between</code> | 
+        <code>space-around</code> | <code>space-evenly</code> <a href="justify-content-demo.html">Link</a>
+      </li>
+      <li>
+        <code>align-items</code>: <code>flex-start</code> | <code>center</code> | 
+        <code>flex-end</code> | <code>stretch</code> | <code>baseline</code> <a href="align-items-demo.html">Link</a>
+      </li>
+      <li>
+        <code>align-content</code>: <code>flex-start</code> | <code>center</code> | 
+        <code>flex-end</code> | <code>space-between</code> | <code>space-around</code> | 
+        <code>stretch</code> <a href="align-content-demo.html">Link</a>
+      </li>
+      <li>
+        <code>gap</code>, <code>row-gap</code>, <code>column-gap</code>: 
+        <em>length values (e.g. <code>1rem</code>, <code>10px</code>)</em> <a href="gap-demo.html">Link</a>
+      </li>
+    </ul>
+  </section>
+
+  <section id="item-properties">
+    <h2>Flex Item Properties</h2>
+    <ul>
+      <li>
+        <code>order</code>: <em>integer</em> (default <code>0</code>)  
+        — controls the visual order of items   <a href="order-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex-grow</code>: <em>non-negative number</em> (default <code>0</code>)  
+        — defines how much an item will grow relative to its siblings <a href="flex-grow-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex-shrink</code>: <em>non-negative number</em> (default <code>1</code>)  
+        — defines how much an item will shrink relative to its siblings <a href="flex-shrink-demo.html">Link</a>
+      </li> 
+      <li>
+        <code>flex-basis</code>: <code>auto</code> | <em>length</em> | <code>content</code>  
+        (default <code>auto</code>) — sets the initial main size <a href="flex-basis-demo.html">Link</a>
+      </li>
+      <li>
+        <code>flex</code>: <em>shorthand</em> for 
+        <code>flex-grow</code>, <code>flex-shrink</code>, <code>flex-basis</code>  
+        (e.g. <code>flex: 1 0 100px</code>) <a href="flex-shorthand-demo.html">Link</a>
+      </li>
+      <li>
+        <code>align-self</code>: <code>auto</code> | <code>flex-start</code> | 
+        <code>center</code> | <code>flex-end</code> | <code>baseline</code> | 
+        <code>stretch</code> — overrides the container’s <code>align-items</code> 
+        for a single item <a href="align-self-demo.html">Link</a>
+      </li>
+    </ul>
+  </section>
+
+</body>
+</html>

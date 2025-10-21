@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gap Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; flex-wrap: wrap; border: 2px solid #3498db; padding: 10px; margin: 10px 0; width: 300px; }
+    .flex-item { width: 60px; height: 40px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; } .item4 { background: #9b59b6; }
+    .gap-10 { gap: 10px; } .gap-20 { gap: 20px; } .row-gap-15 { row-gap: 15px; } .column-gap-25 { column-gap: 25px; } .gap-combined { row-gap: 15px; column-gap: 25px; }
+  </style>
+</head>
+<body>
+  <h1>Gap Properties</h1>
+  
+  <div class="demo-section">
+    <h2>No gap (default)</h2>
+    <div class="flex-container">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>gap: 10px</h2>
+    <div class="flex-container gap-10">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>gap: 20px</h2>
+    <div class="flex-container gap-20">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>row-gap: 15px, column-gap: 25px</h2>
+    <div class="flex-container gap-combined">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

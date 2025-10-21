@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Align Content Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; flex-wrap: wrap; border: 2px solid #3498db; padding: 10px; margin: 10px 0; width: 300px; height: 200px; }
+    .flex-item { width: 80px; height: 40px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; } .item2 { background: #27ae60; } .item3 { background: #f39c12; } .item4 { background: #9b59b6; } .item5 { background: #34495e; } .item6 { background: #16a085; }
+    .content-flex-start { align-content: flex-start; } .content-center { align-content: center; } .content-flex-end { align-content: flex-end; } .content-space-between { align-content: space-between; } .content-space-around { align-content: space-around; } .content-stretch { align-content: stretch; }
+  </style>
+</head>
+<body>
+  <h1>Align Content</h1>
+  
+  <div class="demo-section">
+    <h2>align-content: flex-start</h2>
+    <div class="flex-container content-flex-start">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div><div class="flex-item item5">5</div><div class="flex-item item6">6</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-content: center</h2>
+    <div class="flex-container content-center">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div><div class="flex-item item5">5</div><div class="flex-item item6">6</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-content: flex-end</h2>
+    <div class="flex-container content-flex-end">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div><div class="flex-item item5">5</div><div class="flex-item item6">6</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-content: space-between</h2>
+    <div class="flex-container content-space-between">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div><div class="flex-item item5">5</div><div class="flex-item item6">6</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-content: space-around</h2>
+    <div class="flex-container content-space-around">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div><div class="flex-item item4">4</div><div class="flex-item item5">5</div><div class="flex-item item6">6</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-content: stretch</h2>
+    <div class="flex-container content-stretch">
+      <div class="flex-item item1" style="height: auto;">1</div><div class="flex-item item2" style="height: auto;">2</div><div class="flex-item item3" style="height: auto;">3</div><div class="flex-item item4" style="height: auto;">4</div><div class="flex-item item5" style="height: auto;">5</div><div class="flex-item item6" style="height: auto;">6</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

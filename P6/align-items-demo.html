@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Align Items Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; color: #333; }
+    h1, h2 { color: #2c3e50; }
+    .demo-section { margin: 2rem 0; padding: 1rem; border: 1px solid #ddd; }
+    .flex-container { display: flex; border: 2px solid #3498db; padding: 10px; margin: 10px 0; height: 120px; }
+    .flex-item { width: 80px; margin: 5px; padding: 10px; text-align: center; color: white; font-size: 12px; }
+    .item1 { background: #e74c3c; height: 40px; } .item2 { background: #27ae60; height: 60px; } .item3 { background: #f39c12; height: 50px; }
+    .align-flex-start { align-items: flex-start; } .align-center { align-items: center; } .align-flex-end { align-items: flex-end; } .align-stretch { align-items: stretch; } .align-baseline { align-items: baseline; }
+  </style>
+</head>
+<body>
+  <h1>Align Items</h1>
+  
+  <div class="demo-section">
+    <h2>align-items: flex-start</h2>
+    <div class="flex-container align-flex-start">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-items: center</h2>
+    <div class="flex-container align-center">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-items: flex-end</h2>
+    <div class="flex-container align-flex-end">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-items: stretch</h2>
+    <div class="flex-container align-stretch">
+      <div class="flex-item item1" style="height: auto;">1</div><div class="flex-item item2" style="height: auto;">2</div><div class="flex-item item3" style="height: auto;">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>align-items: baseline</h2>
+    <div class="flex-container align-baseline">
+      <div class="flex-item item1">1</div><div class="flex-item item2">2</div><div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>

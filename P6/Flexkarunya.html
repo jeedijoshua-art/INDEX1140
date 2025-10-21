@@ -1,0 +1,425 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karunya University Campus Guide</title>
+     <link rel="icon" href="karunya.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #CCDDD3;
+            color: #2d3748;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background:#EEF4D4;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            color:#000000;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+             color:#000000;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .sections-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .audio-guide {
+            background: #000000;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+        }
+
+        .audio-guide p {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .audio-guide i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 25px;
+            outline: none;
+        }
+
+        .section {
+            background: white;
+            margin: 0;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex: 1 1 calc(50% - 10px);
+            min-width: 300px;
+        }
+
+
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: #2d3748;
+        }
+
+        .comment-section .section-title {
+            color: #28a745;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section p {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .loc {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #744210;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .loc i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 0;
+        }
+
+        li {
+            list-style: none;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+        }
+
+        li::before {
+            content: '\2022';
+            color: #000000;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 20px 15px;
+                flex: 1 1 100%;
+            }
+
+            .sections-container {
+                flex-direction: column;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1000;
+        }
+        .dm-serif-text-regular{
+            font-family: "DM Serif Text", serif;
+            font-weight: 400;
+            font-style: normal; 
+        }
+
+        .comment-section {
+            background: #f8f9fa;
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #28a745;
+        }
+
+        .comment-form {
+            margin-top: 15px;
+        }
+
+        .comment-box {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .comment-box:focus {
+            outline: none;
+            border-color: #28a745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .submit-btn, .reset-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .reset-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+        }
+
+        .reset-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+    </style>
+</head>
+<body class="dm-serif-text-regular">
+    <div class="scroll-indicator"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1><strong><ins>Karunya University Campus Guide.</ins></strong></h1>
+            <h2>Discover Our Academic Excellence & Innovation Hub</h2>
+        </div>
+        <div class="content">
+            <div class="audio-guide">
+                <p><i></i><strong></strong><ins>University Anthem</ins><br>Experience the spirit of Karunya University through our anthem, a melodious tribute to our values and vision.</strong></p>
+                <audio controls>
+                    <source src="KarunyaAnthem.mp3" type="audio/mpeg">
+                    <source src="KarunyaAnthem.mp3" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+
+            <div class="sections-container">
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Central Building
+                    </div>
+                    <p>The heart of our campus where groundbreaking research and academic excellence converge. This architectural masterpiece welcomes you into an environment of innovation and learning, setting the tone for your entire university experience.</p>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Computer Technology Center (CTC)
+                    </div>
+                    <p>The digital backbone of Karunya University, ensuring seamless connectivity and technological infrastructure across our entire campus ecosystem.</p>
+                    <ul>
+                        <li><strong> CTC-1:</strong> Strategic location at Central Library's 3rd floor</li>
+                        <li><strong> CTC-2:</strong> Dedicated facility beyond the Central Library</li>
+                        <li><strong> CTC-3:</strong> Conveniently positioned near the Main Building</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Computer Science Engineering Block
+                    </div>
+                    <p>A three-story hub of technological innovation where future software engineers and computer scientists develop cutting-edge solutions. Nestled against the scenic Sirivani hills, it provides an inspiring environment for coding and creativity.</p>
+                    <span><i></i>• South campus corner - scenic yet accessible</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Electronics & Communication Engineering Block
+                    </div>
+                    <p>An expansive facility housing advanced laboratories and research centers, also serving as the home for CTC-3. Here, students explore the frontiers of electronics and communication technologies.</p>
+                    <span><i></i>• Adjacent to the Main Building</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Mechanical Engineering Department
+                    </div>
+                    <p>Where mechanical innovation comes to life through design, development, and maintenance of sophisticated systems. Students prepare for dynamic careers in automotive, aerospace, energy, and manufacturing industries.</p>
+                    <span><i></i>• East campus, neighboring Emmanuel Auditorium</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Artificial Intelligence & Machine Learning Department
+                    </div>
+                    <p>The future of technology unfolds here through intelligent systems development. Students dive deep into data science, neural networks, natural language processing, and computer vision to shape tomorrow's AI landscape.</p>
+                    <span><i></i>• Beyond the ECE Block</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Aerospace Engineering Department
+                    </div>
+                    <p>Where dreams of flight become reality through the design and maintenance of aircraft and spacecraft. Students master aerodynamics, propulsion systems, advanced materials, and flight mechanics.</p>
+                    <span><i></i>• Facing Mechanical Department - perfectly positioned pair</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Agricultural Engineering Department
+                    </div>
+                    <p>Revolutionizing farming through engineering excellence, focusing on sustainable irrigation systems, advanced machinery, soil management, and innovative post-harvest technologies for global food security.</p>
+                    <span><i></i>• En route to CSE block, left side</span>
+                </div>
+
+                <div class="section">
+                    <div class="section-title">
+                        <i></i>Food Processing Department
+                    </div>
+                    <p>Transforming raw ingredients into high-quality food products through advanced processing techniques, with expertise in preservation, innovative packaging, and comprehensive quality assurance systems.</p>
+                    <span><i></i>• Strategically between AI&ML and ECE blocks</span>
+                </div>
+            </div>
+
+            <div class="comment-section">
+                <div class="section-title">
+                    Share Your Thoughts
+                </div>
+                <p>We'd love to hear your feedback about Karunya University!</p>
+                    <textarea class="comment-box" placeholder="Write your comments here..." rows="4"></textarea>
+                    <div class="button-group">
+                        <button type="submit" class="submit-btn"><a href="signcss.html">submit</a></button>
+                        <button type="reset" class="reset-btn">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

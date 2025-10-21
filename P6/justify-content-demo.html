@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justify Content Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .demo-section {
+      margin: 2rem 0;
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+    .flex-container {
+      display: flex;
+      border: 2px solid #3498db;
+      padding: 10px;
+      margin: 10px 0;
+      height: 80px;
+    }
+    .flex-item {
+      width: 80px;
+      height: 60px;
+      margin: 5px;
+      padding: 10px;
+      text-align: center;
+      color: white;
+      font-size: 14px;
+    }
+    .item1 { background: #e74c3c; }
+    .item2 { background: #27ae60; }
+    .item3 { background: #f39c12; }
+    
+    .justify-flex-start { justify-content: flex-start; }
+    .justify-center { justify-content: center; }
+    .justify-flex-end { justify-content: flex-end; }
+    .justify-space-between { justify-content: space-between; }
+    .justify-space-around { justify-content: space-around; }
+    .justify-space-evenly { justify-content: space-evenly; }
+  </style>
+</head>
+<body>
+  <h1>Justify Content</h1>
+  
+  <div class="demo-section">
+    <h2>justify-content: flex-start (default)</h2>
+    <div class="flex-container justify-flex-start">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>justify-content: center</h2>
+    <div class="flex-container justify-center">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>justify-content: flex-end</h2>
+    <div class="flex-container justify-flex-end">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>justify-content: space-between</h2>
+    <div class="flex-container justify-space-between">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>justify-content: space-around</h2>
+    <div class="flex-container justify-space-around">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <div class="demo-section">
+    <h2>justify-content: space-evenly</h2>
+    <div class="flex-container justify-space-evenly">
+      <div class="flex-item item1">1</div>
+      <div class="flex-item item2">2</div>
+      <div class="flex-item item3">3</div>
+    </div>
+  </div>
+  
+  <p><a href="flexbox-index.html">Back to Index</a></p>
+</body>
+</html>
