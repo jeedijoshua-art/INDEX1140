@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign In - Karunya University</title>
+    <link rel="icon" href="karunya.png">
+    <style>
+        body {
+            background-color: #CCDDD3;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #461220;
+            text-align: center;
+        }
+        .container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        table {
+            background-color: white;
+            border: 2px solid #461220;
+            margin: auto;
+            padding: 10px;
+        }
+        td {
+            font-size: 18px;
+            padding: 6px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 95%;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+        input[type="radio"] {
+            margin: 5px;
+        }
+        button {
+            font-size: 18px;
+            padding: 5px 15px;
+            margin: 5px;
+            background-color: #CCDDD3;
+            border: 1px solid #461220;
+            cursor: pointer;
+        }
+        .note {
+            color: #461220;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign In to Karunya University</h1>
+        <form action="#" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="gender" value="male" required> Male
+                        <input type="radio" name="gender" value="female"> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input type="password" name="confirm_password" required></td>
+                </tr>
+                <tr>
+                    <td>Mobile No:</td>
+                    <td><input type="text" name="mobile" maxlength="10" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit">Sign In</button>
+                        <button type="reset">Reset</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <br>
+        <div class="note">Sign in to know more about Karunya University!</div>
+    </div>
+</body>
+</html>

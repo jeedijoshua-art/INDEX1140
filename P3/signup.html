@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup</title>
+  <style>
+    body {
+      background-color: #eeabc4;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    table {
+      width: 30%;
+      height: 500px;
+      border: 5px solid black;
+      border-collapse: collapse;
+      margin: auto;
+      background-color: #fff;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 95%;
+      padding: 5px;
+    }
+
+    button {
+      padding: 5px 15px;
+      font-size: 16px;
+      background-color: #ea5455;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background-color: #c03d3e;
+    }
+  </style>
+</head>
+<body>
+  <h1><strong>Signup For Better Results</strong></h1>
+
+  <table>
+    <tr>
+      <td><label for="Name">Name:</label></td>
+      <td><input type="text" id="Name"></td>
+    </tr>
+
+    <tr>
+      <td>Select Gender:</td>
+      <td>
+        <input type="radio" name="gender" value="male" required> Male
+        <input type="radio" name="gender" value="female"> Female
+      </td>
+    </tr>
+
+    <tr>
+      <td><label for="Email">Email:</label></td>
+      <td><input type="text" id="Email"></td>
+    </tr>
+
+    <tr>
+      <td><label for="Phone">Phone:</label></td>
+      <td><input type="text" id="Phone"></td>
+    </tr>
+
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" name="password" required></td>
+    </tr>
+
+    <tr>
+      <td>Confirm Password:</td>
+      <td><input type="password" name="confirm_password" required></td>
+    </tr>
+
+    <tr>
+      <td colspan="2" align="center">
+        <button type="submit">
+          <a href="Thankyou.html">Submit</a>
+        </button>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
