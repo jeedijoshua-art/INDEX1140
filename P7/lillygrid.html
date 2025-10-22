@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOM's Kitchen.</title>
+<style>
+    body{
+        background-color:#F0B9D5;
+        display: grid;
+        padding:50px;
+        align-items: center;
+        font-family:'Times New Roman', Times, serif 
+    }
+     .div1{
+        grid-column-start: auto;   
+        background-color:gainsboro;   
+        padding: 10px;  
+        align-content: center;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        grid-template-areas:
+            "header header"
+            "menu content"
+            "footer footer";
+        grid-template-columns: 1fr 3fr;
+        gap: 5px;
+        padding: 5px;
+        }
+    .div2{
+        background-color: gainsboro;
+        padding: 10px;
+        border:2px solid wheat;
+    }
+    .item{
+            background-color:#EE92C2;
+            border:3px solid black;
+            padding:10px;
+    }
+    .photo{
+        display:flex;
+        background-color:#EE92C2;
+        border:3px solid black;
+        padding: 50px;
+    }
+    #Description{
+        padding: 15px;
+        justify-content: right;
+        display: flex;
+        align-content: center;
+    }
+    .white{
+        color:black;
+        font-size:x-large;
+    }
+    .div3{
+        grid-column-start: auto;   
+        background-color:gainsboro;   
+        padding: 10px;  
+        align-content: center;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        }
+    .my-button{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        justify-items: center;
+    }
+    .recipe-btn{
+        background-color: #EE92C2;
+        color: black;
+        padding: 12px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        border: 2px solid black;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .recipe-btn:hover{
+        background-color: #F0B9D5;
+    }
+    #chickenfry{
+        background-color:#EE92C2;
+        border:3px solid black;
+        padding: 10px;
+    }
+    .recipe-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        align-items: start;
+    }
+    .recipe-content{
+        font-size: x-large;   
+        font-family:'Times New Roman', Times, serif;
+    }
+    .recipe-content h3{
+        font-size: xx-large;
+    }
+    .recipe-images img{
+        border:3px solid black; 
+    }
+    .video{
+        grid-column: 1 / -1;
+        text-align: center; 
+        padding: 15px;
+        margin-top: 10px;
+    }
+    .container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+    }
+    .container > div.header {
+    grid-area: header;
+    text-align: center;
+    }
+    .container > div.menu {
+    grid-area: menu;
+    }
+    .container > div.content {
+    grid-area: content;
+    }
+    .container > div.footer {
+    grid-area: footer;
+    }
+</style>
+</head>
+<body>
+     <div class="div1">
+        <div class="item">
+            <h1><center><ins>MOM's KITCHEN</ins></center></h1>
+        </div>
+  </div>
+    <div class="div1">
+        <div class="item">
+            <h2><center>Hello. This is V.Lilly. This webpage is about my Son's favorite food.</center></h2>
+        </div>
+    </div>
+    <div class="div2">
+        <div class="photo">
+            <img src="photo.png" height="500px" width="700px">
+            <div id="Description">
+                <h3 class="white"><strong><center>Description:<br><br>Moms kitchen is a warm and welcoming space, filled with the aroma of delicious homemade food and the gentle hum of family conversations.<br>
+                    Every meal carries a touch of care, making it a place where laughter, memories, and comfort are always on the menu.
+                     Its a haven where the simple act of cooking together brings everyone closer, celebrating love through flavors and togetherness<br></center></strong></h3>
+            </div>
+        </div>
+    </div>
+    <div class="div1">
+            <div class="item">
+                <h2><center>MENU:</center></h2>
+                <div class="my-button" align="center">
+                    <a href="#chickenfry" class="recipe-btn"><strong>Chicken Fry</strong></a>
+                    <a href="#gulabjamun" class="recipe-btn"><strong>Gulab Jamun</strong></a>
+                    <a href="#mangolassi" class="recipe-btn"><strong>Mango Lassi</strong></a>
+                    <a href="#chickencutlet" class="recipe-btn"><strong>Chicken Cutlet</strong></a>
+                </div>
+            </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="chickenfry">
+            <h1 class="white"><center><ins><strong>Chicken Fry </strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <h3><ins>Ingredients:</ins></h3>
+                    <ul>
+                        <li>500g chicken pieces</li>
+                        <li>1 cup buttermilk</li>
+                        <li>1 cup all-purpose flour</li>
+                        <li>1 tsp paprika</li>
+                        <li>1 tsp garlic powder</li>
+                        <li>Salt and pepper to taste</li>
+                        <li>Oil for frying</li>
+                    </ul>
+                    <h3><ins>Instructions:</ins></h3>
+                    <ol>
+                        <li>Marinate the chicken in buttermilk for at least 1 hour.</li>
+                        <li>In a bowl, mix flour, paprika, garlic powder, salt, and pepper.</li>
+                        <li>Heat oil in a deep fryer or large skillet.</li>
+                        <li>Dredge the marinated chicken in the flour mixture.</li>
+                        <li>Fry the chicken until golden brown and cooked through, about 10-12 minutes.</li>
+                        <li>Drain on paper towels and serve hot.</li>
+                    </ol>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="chickenfry.png" alt="Chicken Fry" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BjbPZQJP7uc?si=7gTSOYl0OVhARW-Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="gulabjamun">
+            <h1 class="white"><center><ins><strong>Gulab Jamun</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <h3><ins>Ingredients:</ins></h3>
+                    <ul>
+                        <li>1 cup milk powder</li>
+                        <li>1/4 cup all-purpose flour</li>
+                        <li>1/4 cup ghee (clarified butter)</li>
+                        <li>1/2 cup milk</li>
+                        <li>2 cups sugar</li>
+                        <li>2 cups water</li>
+                        <li>1/2 tsp cardamom powder</li>
+                        <li>Oil for frying</li>
+                    </ul>
+                    <h3><ins>Instructions:</ins></h3>
+                    <ol>
+                        <li>In a bowl, mix milk powder, flour, and ghee. Add milk gradually to form a soft dough.</li>
+                        <li>Divide the dough into small balls, ensuring there are no cracks.</li>
+                        <li>In a pan, combine sugar and water. Bring to a boil and add cardamom powder. Simmer for 5 minutes.</li>
+                        <li>Heat oil in a deep fryer or large skillet.</li>
+                        <li>Fry the dough balls on medium heat until golden brown.</li>
+                        <li>Drain and immediately soak them in the warm sugar syrup for at least 30 minutes.</li>
+                        <li>Serve warm or at room temperature.</li>
+                    </ol>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="gulabjamun.png" alt="Gulab Jamun" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/J3O0ZEJYLFQ?si=uJW-N1BLoJbl-FuY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="mangolassi">
+            <h1 class="white"><center><ins><strong>Mango Lassi</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <h3><ins>Ingredients:</ins></h3>
+                    <ul>
+                        <li>2 ripe mangoes, peeled and chopped</li>
+                        <li>2 cups plain yogurt</li>
+                        <li>1/2 cup milk</li>
+                        <li>2-3 tbsp sugar (adjust to taste)</li>
+                        <li>A pinch of cardamom powder (optional)</li>
+                        <li>Ice cubes (optional)</li>
+                    </ul>
+                    <h3><ins>Instructions:</ins></h3>
+                    <ol>
+                        <li>In a blender, combine chopped mangoes, yogurt, milk, sugar, and cardamom powder.</li>
+                        <li>Blend until smooth and creamy.</li>
+                        <li>If desired, add ice cubes and blend again for a chilled lassi.</li>
+                        <li>Pour into glasses and serve immediately.</li>
+                    </ol>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="mangolassi.png" alt="Mango Lassi" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xqir4h6rYJw?si=cYbNYjn829mRPz5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+    </div>                
+    <div class="div1">
+        <div class="item" id="chickencutlet">
+            <h1 class="white"><center><ins><strong>Chicken Cutlet</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <h3><ins>Ingredients:</ins></h3>
+                    <ul>
+                        <li>500g minced chicken</li>
+                        <li>1 onion, finely chopped</li>
+                        <li>2 green chilies, finely chopped</li>
+                        <li>1 tsp ginger-garlic paste</li>
+                        <li>1/2 cup bread crumbs</li>
+                        <li>1 egg, beaten</li>
+                        <li>Salt and pepper to taste</li>
+                        <li>Oil for frying</li>
+                    </ul>
+                    <h3><ins>Instructions:</ins></h3>
+                    <ol>
+                        <li>In a bowl, combine minced chicken, onion, green chilies, ginger-garlic paste, salt, and pepper.</li>
+                        <li>Shape the mixture into small cutlets.</li>
+                        <li>Dip each cutlet in the beaten egg, then coat with bread crumbs.</li>
+                        <li>Heat oil in a skillet over medium heat.</li>
+                        <li>Fry the cutlets until golden brown and cooked through, about 4-5 minutes per side.</li>
+                        <li>Drain on paper towels and serve hot with chutney or sauce.</li>
+                    </ol>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="chickencutlets.png" alt="Chicken Cutlet" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1Saka-LY_hE?si=h7pwkCB5gQ7g45Y1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+    </div>
+</body>
+</html>
