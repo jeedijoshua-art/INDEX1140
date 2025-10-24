@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Orientation</title>
+<style>
+html, body {
+min-height: 100%;
+margin: 0;
+padding: 0;
+font-family: 'Times New Roman', Times, serif;
+background-color: antiquewhite;
+}
+
+.content {
+display: grid;
+place-items: center;
+min-height: 30vh;
+margin-top: 20px;
+}
+
+.box {
+display: none;
+background: #fff6e9;
+padding: 2em 1.5em;
+border-radius: 12px;
+box-shadow: 0 2px 16px #deb88744;
+max-width: 400px;
+text-align: left;
+}
+
+h2 {
+color: crimson;
+margin-top: 0;
+}
+
+/* Hide all boxes by default */
+.view-mobile-tablet,
+.view-desktop-large,
+.view-landscape,
+.view-portrait {
+display: none;
+}
+
+/* VIEW 1: Mobile OR Tablet (max-width: 1023px) */
+@media (max-width: 1023px) {
+.view-mobile-tablet { 
+display: block;
+}
+}
+
+/* VIEW 2: Desktop and Large Screen (min-width: 1024px) */
+@media (min-width: 1024px) {
+.view-desktop-large { 
+display: block;
+}
+}
+
+/* VIEW 3: Landscape Orientation (min-width: 768px AND landscape) */
+@media (orientation: landscape) and (min-width: 768px) and (max-width: 1279px) {
+.view-landscape { 
+display: block;
+}
+.view-mobile-tablet {
+display: none;
+}
+}
+
+/* VIEW 4: Portrait Orientation (max-width: 767px AND portrait) */
+@media (orientation: portrait) and (max-width: 767px) {
+.view-portrait { 
+display: block;
+}
+.view-mobile-tablet {
+display: none;
+}
+}
+</style>
+</head>
+<body>
+<div class="div1">
+<div class="item">
+<h1><center><ins>Demo Page</ins></center></h1>
+</div>
+</div>
+
+<div class="div1">
+<div class="item">
+<h2><center>Hello. This is the demo page</center></h2>
+</div>
+</div>
+
+<div class="content">
+<!-- VIEW 1: Mobile OR Tablet -->
+<div class="box view-mobile-tablet">
+<h2>Orientation-1: Mobile/Tablet View</h2>
+<p><b>This is Mobile OR Tablet View</b></p>
+</div>
+
+<!-- VIEW 2: Desktop & Large Screen -->
+<div class="box view-desktop-large">
+<h2>Orientation-2: Desktop View</h2>
+<p><b>This is Desktop View</b></p>
+</div>
+
+<!-- VIEW 3: Landscape Orientation -->
+<div class="box view-landscape">
+<h2>Orientation-3: Landscape View</h2>
+<p><b>This is Landscape View</b></p>
+</div>
+
+<!-- VIEW 4: Portrait Orientation -->
+<div class="box view-portrait">
+<h2>Orientation-4: Portrait View</h2>
+<p><b>This is Portrait View</b></p>
+</div>
+</div>
+
+</body>
+</html>
