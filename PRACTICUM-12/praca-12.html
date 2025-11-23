@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MOM's Kitchen</title>
+
+  <style>
+    /* YOUR ORIGINAL CSS (UNCHANGED!) */
+    body {
+      background-color: #6916416f;
+      display: grid;
+      padding: 50px;
+      align-items: center;
+      font-family: 'Times New Roman', Times, serif;
+      animation: slideInFromLeft 0.5s ease-out;
+    }
+
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .div1 {
+      grid-column-start: auto;
+      background-color: gainsboro;
+      padding: 10px;
+      align-content: center;
+      justify-content: space-evenly;
+      gap: 5px;
+      animation: fadeInUp 0.8s ease-out;
+      border-radius: 5px;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .div2 {
+      background-color: gainsboro;
+      padding: 10px;
+      border: 2px solid wheat;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      border-radius: 5px;
+    }
+
+    .item {
+      background-color: #EE92C2;
+      border: 3px solid black;
+      padding: 10px;
+      animation: bounceIn 0.6s ease-out;
+      border-radius: 5px;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0.3);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .photo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background-color: #EE92C2;
+      border: 3px solid black;
+      padding: 30px;
+      animation: slideInRight 0.8s ease-out 0.3s both;
+      border-radius: 5px;
+    }
+
+    @keyframes slideInRight {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    #Description {
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      max-width: 700px;
+    }
+
+    .white {
+      color: black;
+      font-size: x-large;
+    }
+
+    .menu-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, #EE92C2, #F0B9D5);
+      padding: 12px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      animation: slideDown 0.8s ease-out;
+    }
+
+    @keyframes slideDown {
+      0% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .my-button {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      justify-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    body {
+      padding-top: 80px;
+    }
+
+    .recipe-btn {
+      background: linear-gradient(45deg, #EE92C2, #F0B9D5);
+      color: black;
+      padding: 10px 14px;
+      border-radius: 25px;
+      text-decoration: none;
+      border: 2px solid black;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    .recipe-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .ingredients-box,
+    .instructions-box {
+      background-color: #F0B9D5;
+      border: 2px solid black;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    #inventory-section {
+      margin-top: 40px;
+      background-color: #EE92C2;
+      border: 3px solid black;
+      padding: 18px;
+      border-radius: 10px;
+    }
+
+    #productsTable {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: #F0B9D5;
+      border: 2px solid black;
+    }
+
+    #productsTable th,
+    #productsTable td {
+      padding: 10px;
+      border: 1px solid black;
+      text-align: left;
+    }
+
+    #productsTable th {
+      background: #EE92C2;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======================================================================
+       YOUR ORIGINAL HTML CONTENT (UNCHANGED)
+       ====================================================================== -->
+
+<!-- ===== Header ===== -->
+  <div class="div1">
+    <div class="item">
+      <h1 style="margin:0; text-align:center;"><ins>MOM's KITCHEN</ins></h1>
+    </div>
+  </div>
+
+  <div class="div1">
+    <div class="item">
+      <h2 style="margin:0; text-align:center;">Hello. This is V.Lilly. This webpage is about my Son's favorite food.</h2>
+    </div>
+  </div>
+
+  <!-- ===== Hero (photo + description) ===== -->
+  <div class="div2">
+    <div class="photo">
+      <div style="flex:1; min-width:260px;">
+        <!-- Replace with your image file -->
+        <img src="photo.png" alt="family photo" style="max-width:100%; height:auto; border:3px solid black; border-radius:8px;">
+      </div>
+      <div id="Description" style="flex:1; min-width:260px;">
+        <div>
+          <h3 class="white" style="font-size:large; text-align:left; color:#111;">
+            <strong>Description:</strong><br><br>
+            Moms kitchen is a warm and welcoming space, filled with the aroma of delicious homemade food and the gentle hum of family conversations.
+            Every meal carries a touch of care, making it a place where laughter, memories, and comfort are always on the menu.
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Menu bar (fixed) ===== -->
+  <div class="menu-bar">
+    <div class="my-button">
+      <a href="#chickenfry" class="recipe-btn">Chicken Fry</a>
+      <a href="#gulabjamun" class="recipe-btn">Gulab Jamun</a>
+      <a href="#mangolassi" class="recipe-btn">Mango Lassi</a>
+      <a href="#chickencutlet" class="recipe-btn">Chicken Cutlet</a>
+      <a href="#inventory-section" class="recipe-btn">Inventory Dashboard</a>
+    </div>
+  </div>
+
+  <!-- ===== Chicken Fry ===== -->
+  <div class="div1" id="chickenfry">
+    <div class="item">
+      <h1 style="text-align:center;"><ins><strong>Chicken Fry</strong></ins></h1>
+      <div class="recipe-grid">
+        <div class="recipe-content">
+          <div class="ingredients-box">
+            <h3><ins>Ingredients:</ins></h3>
+            <ul>
+              <li>500g chicken pieces</li>
+              <li>1 cup buttermilk</li>
+              <li>1 cup all-purpose flour</li>
+              <li>1 tsp paprika</li>
+              <li>1 tsp garlic powder</li>
+              <li>Salt and pepper to taste</li>
+              <li>Oil for frying</li>
+            </ul>
+          </div>
+          <div class="instructions-box">
+            <h3><ins>Instructions:</ins></h3>
+            <ol>
+              <li>Marinate the chicken in buttermilk for at least 1 hour.</li>
+              <li>In a bowl, mix flour, paprika, garlic powder, salt, and pepper.</li>
+              <li>Heat oil in a deep fryer or large skillet.</li>
+              <li>Dredge the marinated chicken in the flour mixture.</li>
+              <li>Fry the chicken until golden brown and cooked through, about 10-12 minutes.</li>
+              <li>Drain on paper towels and serve hot.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="recipe-images" style="text-align:right;">
+          <img src="chickenfry.png" alt="Chicken Fry" width="400" height="300">
+        </div>
+      </div>
+      <div class="video">
+        <h2><strong>Watch the Recipe Video:</strong></h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/BjbPZQJP7uc" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Gulab Jamun ===== -->
+  <div class="div1" id="gulabjamun">
+    <div class="item">
+      <h1 style="text-align:center;"><ins><strong>Gulab Jamun</strong></ins></h1>
+      <div class="recipe-grid">
+        <div class="recipe-content">
+          <div class="ingredients-box">
+            <h3><ins>Ingredients:</ins></h3>
+            <ul>
+              <li>1 cup milk powder</li>
+              <li>1/4 cup all-purpose flour</li>
+              <li>1/4 cup ghee (clarified butter)</li>
+              <li>1/2 cup milk</li>
+              <li>2 cups sugar</li>
+              <li>2 cups water</li>
+              <li>1/2 tsp cardamom powder</li>
+              <li>Oil for frying</li>
+            </ul>
+          </div>
+          <div class="instructions-box">
+            <h3><ins>Instructions:</ins></h3>
+            <ol>
+              <li>In a bowl, mix milk powder, flour, and ghee. Add milk gradually to form a soft dough.</li>
+              <li>Divide the dough into small balls, ensuring there are no cracks.</li>
+              <li>In a pan, combine sugar and water. Bring to a boil and add cardamom powder. Simmer for 5 minutes.</li>
+              <li>Heat oil in a deep fryer or large skillet.</li>
+              <li>Fry the dough balls on medium heat until golden brown.</li>
+              <li>Drain and immediately soak them in the warm sugar syrup for at least 30 minutes.</li>
+              <li>Serve warm or at room temperature.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="recipe-images" style="text-align:right;">
+          <img src="gulabjamun.png" alt="Gulab Jamun" width="400" height="300">
+        </div>
+      </div>
+      <div class="video">
+        <h2><strong>Watch the Recipe Video:</strong></h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/J3O0ZEJYLFQ" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Mango Lassi ===== -->
+  <div class="div1" id="mangolassi">
+    <div class="item">
+      <h1 style="text-align:center;"><ins><strong>Mango Lassi</strong></ins></h1>
+      <div class="recipe-grid">
+        <div class="recipe-content">
+          <div class="ingredients-box">
+            <h3><ins>Ingredients:</ins></h3>
+            <ul>
+              <li>2 ripe mangoes, peeled and chopped</li>
+              <li>2 cups plain yogurt</li>
+              <li>1/2 cup milk</li>
+              <li>2-3 tbsp sugar (adjust to taste)</li>
+              <li>A pinch of cardamom powder (optional)</li>
+              <li>Ice cubes (optional)</li>
+            </ul>
+          </div>
+          <div class="instructions-box">
+            <h3><ins>Instructions:</ins></h3>
+            <ol>
+              <li>In a blender, combine chopped mangoes, yogurt, milk, sugar, and cardamom powder.</li>
+              <li>Blend until smooth and creamy.</li>
+              <li>If desired, add ice cubes and blend again for a chilled lassi.</li>
+              <li>Pour into glasses and serve immediately.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="recipe-images" style="text-align:right;">
+          <img src="mangolassi.png" alt="Mango Lassi" width="400" height="300">
+        </div>
+      </div>
+      <div class="video">
+        <h2><strong>Watch the Recipe Video:</strong></h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xqir4h6rYJw" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Chicken Cutlet ===== -->
+  <div class="div1" id="chickencutlet">
+    <div class="item">
+      <h1 style="text-align:center;"><ins><strong>Chicken Cutlet</strong></ins></h1>
+      <div class="recipe-grid">
+        <div class="recipe-content">
+          <div class="ingredients-box">
+            <h3><ins>Ingredients:</ins></h3>
+            <ul>
+              <li>500g minced chicken</li>
+              <li>1 onion, finely chopped</li>
+              <li>2 green chilies, finely chopped</li>
+              <li>1 tsp ginger-garlic paste</li>
+              <li>1/2 cup bread crumbs</li>
+              <li>1 egg, beaten</li>
+              <li>Salt and pepper to taste</li>
+              <li>Oil for frying</li>
+            </ul>
+          </div>
+          <div class="instructions-box">
+            <h3><ins>Instructions:</ins></h3>
+            <ol>
+              <li>In a bowl, combine minced chicken, onion, green chilies, ginger-garlic paste, salt, and pepper.</li>
+              <li>Shape the mixture into small cutlets.</li>
+              <li>Dip each cutlet in the beaten egg, then coat with bread crumbs.</li>
+              <li>Heat oil in a skillet over medium heat.</li>
+              <li>Fry the cutlets until golden brown and cooked through, about 4-5 minutes per side.</li>
+              <li>Drain on paper towels and serve hot with chutney or sauce.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="recipe-images" style="text-align:right;">
+          <img src="chickencutlets.png" alt="Chicken Cutlet" width="400" height="300">
+        </div>
+      </div>
+      <div class="video">
+        <h2><strong>Watch the Recipe Video:</strong></h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/1Saka-LY_hE" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Feedback CTA ===== -->
+  <div class="div1">
+    <div class="item" style="text-align:center;">
+      <h2><strong>Want to share your feedback?</strong></h2>
+      <a href="12form.html" class="recipe-btn"><strong>Give Feedback</strong></a>
+    </div>
+  </div>
+
+
+
+
+  <div class="div1">
+    <div class="item" id="inventory-section">
+      <h1 style="text-align:center;"><ins>Product Inventory Dashboard</ins></h1>
+      <p style="text-align:center;">(GET request demo from /api/products)</p>
+
+      <div style="text-align:center;">
+        <button id="loadProductsBtn" class="recipe-btn">Load Products</button>
+      </div>
+
+      <table id="productsTable">
+<table id="productsTable" aria-live="polite">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+      </table>
+    </div>
+  </div>
+
+<script>
+  const loadBtn = document.getElementById('loadProductsBtn');
+  const tableBody = document.querySelector('#productsTable tbody');
+
+  loadBtn.addEventListener('click', async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/products");
+
+      if (!response.ok) throw new Error("Cannot fetch products");
+
+      const products = await response.json();
+      renderTable(products);
+
+    } catch (error) {
+      console.log("API not running. Using recipe ingredient items.");
+
+      const recipeItems = [
+        {
+          id: 1,
+          category: "🍗 Chicken Fry",
+          points: [
+            "Chicken (500g) — ₹120",
+            "Chili Powder (1 tsp) — ₹10",
+            "Ginger-Garlic Paste — ₹15",
+            "Corn Flour (2 tbsp) — ₹8",
+            "Oil for frying — ₹150"
+          ]
+        },
+
+        {
+          id: 2,
+          category: "🥮 Gulab Jamun",
+          points: [
+            "Milk Powder (1 cup) — ₹60",
+            "Maida (¼ cup) — ₹10",
+            "Sugar (2 cups) — ₹25",
+            "Ghee (1 tbsp) — ₹20"
+          ]
+        },
+
+        // ⭐ MANGO LASSI ⭐
+        {
+          id: 3,
+          category: "🥭 Mango Lassi",
+          points: [
+            "Mango Pulp — ₹40",
+            "Yogurt (1 cup) — ₹30",
+            "Milk (½ cup) — ₹12",
+            "Sugar — ₹5"
+          ]
+        },
+
+        // ⭐ CHICKEN CUTLET ⭐
+        {
+          id: 4,
+          category: "🍔 Chicken Cutlet",
+          points: [
+            "Chicken (250g) — ₹80",
+            "Potato (2 pcs) — ₹20",
+            "Onion (1 pc) — ₹5",
+            "Bread Crumbs — ₹25",
+            "Egg (1 pc) — ₹6"
+          ]
+        }
+      ];
+
+      renderPretty(recipeItems);
+    }
+  });
+
+  // ⭐ RENDER WITH POINTS (BULLET LIST STYLE)
+  function renderPretty(items) {
+    tableBody.innerHTML = "";
+    items.forEach(item => {
+      const bullets = item.points
+        .map(pt => `<li>${pt}</li>`)
+        .join("");
+      
+      const totalPrice = item.points.reduce((sum, point) => {
+        const match = point.match(/₹(\d+)/);
+        return sum + (match ? parseInt(match[1]) : 0);
+      }, 0);
+
+      tableBody.innerHTML += `
+        <tr>
+          <td>${item.id}</td>
+          <td><ul style="margin:0; padding-left:15px;">${bullets}</ul></td>
+          <td>₹${totalPrice}</td>
+          <td>${item.category}</td>
+        </tr>
+      `;
+    });
+  }
+
+  // ⭐ DEFAULT RENDER (USED ONLY IF API IS RUNNING)
+  function renderTable(items) {
+    tableBody.innerHTML = "";
+    items.forEach(p => {
+      const randomPrice = p.price || ("₹" + (Math.floor(Math.random() * 300) + 50));
+      tableBody.innerHTML += `
+        <tr>
+          <td>${p.id}</td>
+          <td>${p.name}</td>
+          <td>${randomPrice}</td>
+          <td>${p.category}</td>
+        </tr>
+      `;
+    });
+  }
+</script>
+</body>
+</html>
