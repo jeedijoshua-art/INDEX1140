@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karunya Map Navigator</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+body{
+    display: grid;
+    padding:50px;
+    align-items: center;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #CCDDD3;
+    animation: fadeIn 0.8s ease-in;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.container {
+    display: table;
+    width: 100%;
+    padding: 10px;
+    font-size: x-large;
+    font-family: cursive;
+    border:3px solid black;
+    justify-content: center;
+    background-color:aliceblue;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+@keyframes fadeInUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+.dabba {
+    display: table;
+    width: 100%;
+    padding: 50px;
+    font-size: x-large;
+    font-family: cursive;
+    border:5px solid black;
+    justify-content: center;
+    background-color:#CCDDD3 ;
+}
+.container div { display: table-row; text-align: center; }
+.h3{ font-size: xx-large; font-family: cursive; text-align: center; }
+.h1{ font-size: xxx-large; font-family: cursive; text-align: center; animation: slideDown 1s ease-out; }
+@keyframes slideDown {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+#des{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    animation: slideInRight 1s ease-out 0.6s both;
+}
+@keyframes slideInRight {
+    0% { transform: translateX(50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+.university-img{
+    border: 5px solid black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: #B8D4C1;
+    padding: 10px;
+    animation: zoomIn 1s ease-out 0.3s both;
+    transition: transform 0.3s ease;
+}
+.university-img:hover { transform: scale(1.02); }
+@keyframes zoomIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.div1{
+    grid-column-start: auto;   
+    background-color:gainsboro;     
+    align-content: center;
+    justify-content: space-around;
+    margin:20px;
+    border:1px solid black;
+    padding:10px;
+    animation: slideInLeft 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.div1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+@keyframes slideInLeft {
+    0% { transform: translateX(-50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+.item{
+    background-color:gainsboro;
+    border:3px solid black;
+    padding:10px;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+}
+.heading{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    background-color:lightsteelblue;
+    border:3px solid black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    animation: bounceIn 0.8s ease-out;
+    transition: background-color 0.3s ease;
+}
+.heading:hover { background-color: #87CEEB; }
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Fee Table Extra Styling (simple & matching your theme) ===== */
+.fee-heading {
+    text-align:center;
+    margin-top:20px;
+}
+
+/* ===== URK Input Styling ===== */
+.urk-input {
+    background: linear-gradient(135deg, #B8D4C1, #87CEEB);
+    border: 3px solid #4a90e2;
+    border-radius: 15px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.urk-input:focus {
+    outline: none;
+    border-color: #2c5aa0;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.4);
+}
+
+.urk-input::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+.urk-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c5aa0;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* CRUD Location Manager Styles */
+.location-section {
+    background-color: #B8D4C1;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.location-section input, .location-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
+
+.campus-btn {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 2px solid black;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.campus-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.location-card {
+    background: gainsboro;
+    border: 3px solid black;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-2px);
+}
+
+.location-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.location-actions button {
+    margin-left: 5px;
+    padding: 6px 12px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-location-btn { background: #87CEEB; color: black; }
+.delete-location-btn { background: #f44336; color: white; }
+
+.location-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #B8D4C1;
+    margin: 5% auto;
+    padding: 20px;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-modal {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ===== DARK MODE STYLES ===== */
+:root {
+    --bg-color: #CCDDD3;
+    --text-color: #333;
+    --container-bg: aliceblue;
+    --div-bg: gainsboro;
+    --item-bg: gainsboro;
+    --heading-bg: lightsteelblue;
+    --border-color: black;
+    --location-bg: #B8D4C1;
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --container-bg: #2d2d2d;
+    --div-bg: #3a3a3a;
+    --item-bg: #3a3a3a;
+    --heading-bg: #4a4a4a;
+    --border-color: #666;
+    --location-bg: #2a4a3a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--container-bg);
+    border-color: var(--border-color);
+}
+
+.dabba {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+}
+
+.div1 {
+    background-color: var(--div-bg);
+    border-color: var(--border-color);
+}
+
+.item {
+    background-color: var(--item-bg);
+    border-color: var(--border-color);
+}
+
+.heading {
+    background-color: var(--heading-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.university-img {
+    background-color: var(--location-bg);
+    border-color: var(--border-color);
+}
+
+.location-section {
+    background-color: var(--location-bg);
+    border-color: var(--border-color);
+}
+
+.location-card {
+    background-color: var(--div-bg);
+    border-color: var(--border-color);
+}
+
+.modal-content {
+    background-color: var(--location-bg);
+    border-color: var(--border-color);
+}
+
+/* Dark Mode Toggle Switch */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: var(--div-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dark-mode-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 25px;
+    background: #ccc;
+    border-radius: 25px;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.toggle-switch.active {
+    background: #4a90e2;
+}
+
+.toggle-slider {
+    width: 21px;
+    height: 21px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(25px);
+}
+
+.toggle-label {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+</style>
+</head>
+
+<body class="dabba">
+<!-- Dark Mode Toggle -->
+<div class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <span class="toggle-label">Dark Mode</span>
+    <div class="toggle-switch" id="darkModeSwitch">
+        <div class="toggle-slider"></div>
+    </div>
+</div>
+
+<h1 class="h1"><center><ins>Welcome to Your Karunya Campus Adventure!</ins></center></h1>
+
+<div align="center">
+<div class="university-img">
+    <img src="university.png" height="900" width="1200">
+</div>
+
+<h3 id="des">
+<strong>
+Hey there, future Karunya explorer! Let me tell you about this amazing place we call home. Karunya Institute of Technology and Sciences isn't just a university -
+ it's where dreams take flight and innovation comes alive! Nestled in the beautiful hills of Coimbatore, our campus is like a small city buzzing with energy, creativity, and endless possibilities. Whether you're here to study, visit, or just curious about what makes us special, you're in for a treat!
+</strong>
+</h3>
+
+<h3 class="h3">Ready for a tour? Here are some cool spots you'll absolutely love exploring! 🏢</h3>
+
+<div class="container">
+<div> The Iconic Main Building (you can't miss it!)</div>
+<div> CTC-1, 2 & 3 (our tech command centers)</div>
+<div> CSE Department (where coding magic happens)</div>
+<div> ECE Department (electronics wizards live here)</div>
+<div> Mechanical Department (building the future, literally)</div>
+<div> AI & ML Department (the future is now!)</div>
+<div> Aerospace Department (reach for the stars)</div>
+<div> Agricultural Department (growing tomorrow's solutions)</div>
+<div> Food Processing Department (science meets taste)</div>
+</div>
+
+ <div class="heading">
+    <strong><h2><u><center> "The Heart of Campus - Our Main Building"</center></u></h2></strong>
+    </div>
+
+        <div align="center">
+    <div class="div1">
+        <div class="item">
+        <p>
+        <font size="5px">
+        Picture this: You walk through the main entrance and BAM! This stunning building welcomes you like an old friend. It's not just our central hub where groundbreaking research happens - it's the soul of our campus! Every time I see it, I get that "wow, I'm really part of something special" feeling. Trust me, once you step inside, you'll understand why we're all so proud to call this place home.
+        </font> 
+        </p>
+        </div>
+    </div>
+
+    <div class="heading">
+        <Strong><h2><u>"CTC - Our Digital Command Centers"</u></h2></Strong>
+    </div>
+        
+
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                So, what's CTC? It stands for Computer Technology Center, but I like to call them our "digital command centers"! 🚀 These three buildings are basically the nerve system of our entire campus - every WiFi connection, every online class, every digital magic that happens here flows through these spots.<br><br>
+                Here's where you'll find them:<br>
+                <strong>CTC-1:</strong> Chilling on the 3rd floor of our Central Library (great views up there!)<br>
+                <strong>CTC-2:</strong> Right behind the library - you can't miss it<br>
+                <strong>CTC-3:</strong> Super close to the Main Building (convenient, right?)<br>
+            </font></p>
+        </div>
+    </div>
+
+    <div class="heading">
+            <strong><h2><u>"CSE BLOCK"</u></h2></strong>
+    </div>
+
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                This is the block of Computer Science Engineering.<br>
+                This is the place where are the CSE Students study.This block contains of 3 floors and very close to the hills of Sirivani.<br>
+                •Location:This block is situated at the south corner of Karunya University.We can easily go to the CSE Block and it is kinda far away.
+            </font></p>
+        </div>
+    </div>
+
+
+    <div class="heading">
+    <strong><h2><u>"ESE BLOCK"</u></h2></strong>
+    </div>
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                This is the block of Electronics and Communication Engineering><br>
+                This is a very huge building and CTC-3 is in this  ECE block.<br>
+                •Location: This block is situated at the right side of Main Building.
+            </font></p>
+        </div>
+    </div>
+
+    <div class="heading">
+    <strong><h2><u>"Mechanical Engineering Department"</u></h2></strong>
+    </div>
+    
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                This is the block ofMechanical Engineering Department<br>
+                The Mechanical Engineering department focuses on the design, development, and maintenance of machines and mechanical systems.<br>
+                It covers areas like thermodynamics, manufacturing, fluid mechanics, materials science, and robotics, preparing students for careers in industries such as automotive, aerospace, energy, and manufacturing.<br>
+                •Location:It is located at the East Side of Karunya University and near Emmanuel Auditorium.
+            </font></p>
+        </div>
+    </div>
+
+    <div class="heading">
+        <strong><h2><u>"AI and ML Department"</u></h2></strong>
+    </div>
+
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                The Artificial Intelligence and Machine Learning department specializes in developing intelligent systems that can learn, adapt, and make decisions.<br>
+                It focuses on areas like data science, neural networks, natural language processing, and computer vision for solving real-world problems.<br>
+                •Location:It is located after ECE BLock.
+            </font> </p>
+        </div>
+    </div>
+
+    <div class="heading">
+        <strong><h2><u>"Aerospace Department"</u></h2></strong>
+    </div>
+
+    <div class="div1">
+        <div class="item">
+                <p><font size="5px">
+                    The Aerospace Engineering department focuses on the design, development, and maintenance of aircraft and spacecraft, covering aerodynamics, propulsion, materials, and flight mechanics.<br>
+                    •Location: It is in the Fornt of Mechanical Department Block.<br> The Aerospace and Mechanical Departments are oppsite to each other.
+                </font></p>
+        </div>
+    </div>  
+
+    <div class="heading">
+        <strong><h2><u>"AgriculturalDepartment"</u></h2></strong>
+    </div>
+
+    <div class="div1">
+        <div class="item">
+            <p><font size="5px">
+                The Agricultural Engineering department applies engineering principles to improve farming efficiency, covering areas like irrigation, farm machinery, soil management, and post-harvest technology.<br>
+                •Location: It is on the way to CSE block.When we walk to CSE Block,This Department is on your left side.
+            </font></p>
+        </div>
+    </div>
+
+    <div class="heading">
+        <strong><h2><u>"Food Processing Department"</u></h2></strong>
+    </div>
+
+    <div class="div1">
+        <div class="item">
+          <p><font size="5px">
+            The Food Processing department deals with techniques for transforming raw ingredients into safe, high-quality food products, emphasizing preservation, packaging, and quality assurance.<br>
+            •Location:It is in the between of AI&ML block and ECE block.
+          </font></p>
+        </div>
+    </div>
+
+        <div class="heading">
+        <h2><center>This is about Karunya University.<br> I hope that this webpage is useful for you navigating around the Campus.</center></h2>
+    </div>
+
+<div class="div1">
+    <div class="item" style="text-align:center;">
+        <h2><u>Fee Payment Updates</u></h2>
+        <p>Stay updated with the latest semester payment deadlines.</p>
+        
+        <label for="URK" class="urk-label">ENTER YOUR URK👉🏻:</label>    
+        <input type="text" placeholder="URK22RR1234" class="urk-input"><br>
+
+        <button id="loadFeeBtn" 
+            style="background:#4a90e2; color:white; padding:10px 25px; 
+            border-radius:8px; border:none; font-size:20px; cursor:pointer;">
+            Load Fee Deadlines
+        </button>
+
+        <table id="feeTable" style="width:100%; margin-top:20px; border-collapse:collapse; font-size:20px;">
+            <thead>
+                <tr style="background:#B8D4C1;">
+                    <th style="border:2px solid black; padding:10px;">Fee Type</th>
+                    <th style="border:2px solid black; padding:10px;">Amount</th>
+                    <th style="border:2px solid black; padding:10px;">Last Date</th>
+                </tr>
+            </thead>
+            <tbody style="background:white;"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ===== CAMPUS LOCATION MANAGER (CRUD) ===== -->
+<div class="heading">
+    <strong><h2><u>"Karunya's New Location Manager"</u></h2></strong>
+</div>
+
+<div class="div1" id="location-manager">
+    <div class="item">
+        <h2 style="text-align:center;"><u>Awesome Viewpoints in Karunya</u></h2>
+        
+        <!-- Add Location Form -->
+        <div class="location-section">
+            <h3> Add Viewpoint Locations</h3>
+            <form id="addLocationForm">
+                <input type="text" id="locationName" placeholder="Location Name (e.g., Library, Cafeteria)" required>
+                <textarea id="locationDescription" placeholder="Description of the location" rows="3" required></textarea>
+                <input type="text" id="locationAddress" placeholder="Location/Address within campus" required>
+                <input type="text" id="locationImage" placeholder="Image URL (optional)">
+                <button type="submit" class="campus-btn">Add Location</button>
+            </form>
+        </div>
+
+        <!-- Location List -->
+        <div class="location-section">
+            <h3>📍 Campus Locations</h3>
+            <div id="locationList"></div>
+        </div>
+
+        <!-- Edit Location Modal -->
+        <div id="editLocationModal" class="location-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3> Edit Campus Location</h3>
+                <form id="editLocationForm">
+                    <input type="hidden" id="editLocationId">
+                    <input type="text" id="editLocationName" placeholder="Location Name" required>
+                    <textarea id="editLocationDescription" placeholder="Description" rows="3" required></textarea>
+                    <input type="text" id="editLocationAddress" placeholder="Location/Address" required>
+                    <input type="text" id="editLocationImage" placeholder="Image URL">
+                    <button type="submit" class="campus-btn">Update Location</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="div1">
+    <div class="item" style="text-align:center;">
+        <h2><u>Any Suggestions?</u></h2>
+        <p>We value your feedback! Help us improve the campus tour experience.</p>
+        
+        <a href="15forms.html" style="display:inline-block; background:#4a90e2; color:white; padding:12px 30px; 
+           border-radius:10px; text-decoration:none; font-size:18px; font-weight:bold; 
+           transition:all 0.3s ease; box-shadow:0 4px 8px rgba(0,0,0,0.2);" 
+           onmouseover="this.style.background='#357abd'; this.style.transform='translateY(-2px)';" 
+           onmouseout="this.style.background='#4a90e2'; this.style.transform='translateY(0)';">
+            Share Your Suggestions
+        </a>
+    </div>
+</div>
+
+<!-- ===== CAMPUS TASK SUBMISSION & TIME TRACKER ===== -->
+<div class="heading">
+    <strong><h2><u>"Campus Task Submission Center"</u></h2></strong>
+</div>
+
+<div class="div1">
+    <div class="item" style="text-align:center;">
+        <h2><u>Submit Your Campus Tasks</u></h2>
+        <p>Keep track of your assignments and manage your time effectively.</p>
+        
+        <form id="taskForm" style="max-width: 600px; margin: 0 auto; text-align: left;">
+            <label style="font-weight: bold; margin-top: 10px;">Your Name:</label><br>
+            <input type="text" id="studentName" placeholder="Enter your name" required 
+                   style="width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #4a90e2; border-radius: 5px; font-size: 16px;"><br>
+            
+            <label style="font-weight: bold; margin-top: 10px;">Task Title:</label><br>
+            <input type="text" id="taskTitle" placeholder="What task are you working on?" required 
+                   style="width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #4a90e2; border-radius: 5px; font-size: 16px;"><br>
+            
+            <label style="font-weight: bold; margin-top: 10px;">Task Description:</label><br>
+            <textarea id="taskDescription" placeholder="Tell us more about your task..." required 
+                      style="width: 100%; padding: 10px; margin: 5px 0; border: 2px solid #4a90e2; border-radius: 5px; font-size: 16px; height: 80px;"></textarea><br>
+            
+            <button type="submit" style="background: #4a90e2; color: white; padding: 12px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; margin-top: 10px;">
+                Submit Task
+            </button>
+        </form>
+        
+        <div id="confirmationMessage" style="display: none; background: #B8D4C1; border: 2px solid black; padding: 15px; margin: 20px auto; max-width: 600px; border-radius: 5px;">
+            Task submitted successfully!
+        </div>
+    </div>
+</div>
+
+<div class="heading">
+    <strong><h2><u>"Campus Time Tracker"</u></h2></strong>
+</div>
+
+<div class="div1">
+    <div class="item">
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <!-- Live Clock Section -->
+            <div style="flex: 1; min-width: 300px; background: gainsboro; border: 3px solid black; padding: 20px; text-align: center;">
+                <h3><u>Current Time</u></h3>
+                <div style="background: #B8D4C1; border: 2px solid black; padding: 20px; margin: 15px 0; border-radius: 5px;">
+                    <div id="liveClock" style="font-family: 'Courier New', monospace; font-size: 36px; font-weight: bold; color: #333;">00:00:00</div>
+                    <div id="liveDate" style="font-size: 16px; margin-top: 10px; color: #666;">Loading date...</div>
+                </div>
+                
+                <button id="startClockBtn" style="background: #4a90e2; color: white; padding: 10px 20px; border: 2px solid black; border-radius: 5px; margin: 5px; cursor: pointer; font-weight: bold;">
+                    Start Clock
+                </button>
+                <button id="stopClockBtn" style="background: #f44336; color: white; padding: 10px 20px; border: 2px solid black; border-radius: 5px; margin: 5px; cursor: pointer; font-weight: bold;">
+                    Stop Clock
+                </button>
+            </div>
+            
+            <!-- Countdown Timer Section -->
+            <div style="flex: 1; min-width: 300px; background: gainsboro; border: 3px solid black; padding: 20px; text-align: center;">
+                <h3><u>Study Timer</u></h3>
+                
+                <label style="font-weight: bold; margin-bottom: 10px; display: block;">Set timer (minutes):</label>
+                <input type="number" id="timerInput" min="1" max="60" value="5" 
+                       style="padding: 8px; border: 2px solid black; border-radius: 5px; font-size: 16px; width: 80px; text-align: center;"><br><br>
+                
+                <div style="background: #B8D4C1; border: 2px solid black; padding: 20px; margin: 15px 0; border-radius: 5px;">
+                    <div id="countdownDisplay" style="font-family: 'Courier New', monospace; font-size: 48px; font-weight: bold; color: #333;">05:00</div>
+                    <div id="timerStatus" style="font-size: 16px; margin-top: 10px; color: #666;">Ready to start</div>
+                    <div style="background: #ddd; height: 8px; border-radius: 4px; margin-top: 15px; overflow: hidden;">
+                        <div id="timerProgress" style="background: #4a90e2; height: 100%; width: 100%; transition: width 1s ease;"></div>
+                    </div>
+                </div>
+                
+                <button id="startTimerBtn" style="background: #4a90e2; color: white; padding: 12px 25px; border: 2px solid black; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px;">
+                    Start Timer
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>  
+// ===== FEE PAYMENT SECTION =====
+const feeBtn = document.getElementById("loadFeeBtn");
+const feeBody = document.querySelector("#feeTable tbody");
+
+feeBtn.addEventListener("click", async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/fees");
+    if (!response.ok) throw new Error("API Failed");
+    const data = await response.json();
+    renderFeeTable(data);
+  } catch (err) {
+    const sample = [
+      { type: "Semester Fees", amount: "₹85,000", lastDate: "15-Dec-2025" },
+      { type: "Hostel Fees", amount: "₹45,000", lastDate: "20-Dec-2025" },
+      { type: "Exam Fees", amount: "₹2,000", lastDate: "05-Jan-2026" },
+      { type: "Transport Fees", amount: "₹12,000", lastDate: "10-Dec-2025" }
+    ];
+    renderFeeTable(sample);
+  }
+});
+
+function renderFeeTable(fees) {
+  feeBody.innerHTML = fees.map(fee => `
+    <tr>
+      <td style="border:1px solid black; padding:10px;">${fee.type}</td>
+      <td style="border:1px solid black; padding:10px;">${fee.amount}</td>
+      <td style="border:1px solid black; padding:10px;">${fee.lastDate}</td>
+    </tr>
+  `).join("");
+}
+
+// ===== CAMPUS LOCATION CRUD OPERATIONS =====
+let locations = JSON.parse(localStorage.getItem('campusLocations')) || [];
+let nextLocationId = locations.length > 0 ? Math.max(...locations.map(l => l.id)) + 1 : 1;
+
+// CREATE - Add Location
+document.getElementById('addLocationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const location = {
+    id: nextLocationId++,
+    name: document.getElementById('locationName').value,
+    description: document.getElementById('locationDescription').value,
+    address: document.getElementById('locationAddress').value,
+    image: document.getElementById('locationImage').value || 'campus-default.png'
+  };
+  locations.push(location);
+  localStorage.setItem('campusLocations', JSON.stringify(locations));
+  displayLocations();
+  this.reset();
+  alert('Campus location added successfully!');
+});
+
+// READ - Display Locations
+function displayLocations() {
+  const locationList = document.getElementById('locationList');
+  locationList.innerHTML = locations.map(location => `
+    <div class="location-card">
+      <div class="location-actions">
+        <button class="edit-location-btn" onclick="editLocation(${location.id})">Edit</button>
+        <button class="delete-location-btn" onclick="deleteLocation(${location.id})">Delete</button>
+      </div>
+      <h4>${location.name}</h4>
+      <p><strong>Description:</strong> ${location.description}</p>
+      <p><strong>Location:</strong> ${location.address}</p>
+    </div>
+  `).join('');
+}
+
+// UPDATE - Edit Location
+function editLocation(id) {
+  const location = locations.find(l => l.id === id);
+  document.getElementById('editLocationId').value = location.id;
+  document.getElementById('editLocationName').value = location.name;
+  document.getElementById('editLocationDescription').value = location.description;
+  document.getElementById('editLocationAddress').value = location.address;
+  document.getElementById('editLocationImage').value = location.image;
+  document.getElementById('editLocationModal').style.display = 'block';
+}
+
+document.getElementById('editLocationForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const id = parseInt(document.getElementById('editLocationId').value);
+  const locationIndex = locations.findIndex(l => l.id === id);
+  locations[locationIndex] = {
+    id: id,
+    name: document.getElementById('editLocationName').value,
+    description: document.getElementById('editLocationDescription').value,
+    address: document.getElementById('editLocationAddress').value,
+    image: document.getElementById('editLocationImage').value
+  };
+  localStorage.setItem('campusLocations', JSON.stringify(locations));
+  displayLocations();
+  document.getElementById('editLocationModal').style.display = 'none';
+  alert('Campus location updated successfully!');
+});
+
+// DELETE - Remove Location
+function deleteLocation(id) {
+  if (confirm('Are you sure you want to delete this campus location?')) {
+    locations = locations.filter(l => l.id !== id);
+    localStorage.setItem('campusLocations', JSON.stringify(locations));
+    displayLocations();
+    alert('Campus location deleted successfully!');
+  }
+}
+
+// Modal Controls
+document.querySelector('.close-modal').onclick = () => document.getElementById('editLocationModal').style.display = 'none';
+window.onclick = (e) => { if (e.target === document.getElementById('editLocationModal')) document.getElementById('editLocationModal').style.display = 'none'; };
+
+// Initialize
+displayLocations();
+
+// ===== INTERACTIVE COMPONENT FUNCTIONALITY =====
+let clockInterval = null;
+let countdownInterval = null;
+let isClockRunning = false;
+let countdownTime = 0;
+let totalCountdownTime = 0;
+
+// Task Form Submission
+document.getElementById('taskForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const studentName = document.getElementById('studentName').value;
+    const taskTitle = document.getElementById('taskTitle').value;
+    const taskDescription = document.getElementById('taskDescription').value;
+    
+    // Show confirmation message using setTimeout
+    setTimeout(() => {
+        const confirmationMsg = document.getElementById('confirmationMessage');
+        confirmationMsg.style.display = 'block';
+        confirmationMsg.innerHTML = `Task "${taskTitle}" by ${studentName} has been submitted successfully!`;
+        
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            confirmationMsg.style.display = 'none';
+        }, 5000);
+        
+        // Reset form
+        this.reset();
+    }, 500);
+});
+
+// Live Clock Functions
+function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('en-US', { 
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    const dateString = now.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    
+    document.getElementById('liveClock').textContent = timeString;
+    document.getElementById('liveDate').textContent = dateString;
+}
+
+// Start Clock
+document.getElementById('startClockBtn').addEventListener('click', function() {
+    if (!isClockRunning) {
+        clockInterval = setInterval(updateClock, 1000);
+        updateClock(); // Update immediately
+        isClockRunning = true;
+        this.disabled = true;
+        document.getElementById('stopClockBtn').disabled = false;
+        
+        // Add visual feedback
+        this.innerHTML = 'Clock Running';
+        document.getElementById('stopClockBtn').innerHTML = 'Stop Clock';
+    }
+});
+
+// Stop Clock
+document.getElementById('stopClockBtn').addEventListener('click', function() {
+    if (isClockRunning) {
+        clearInterval(clockInterval);
+        isClockRunning = false;
+        document.getElementById('startClockBtn').disabled = false;
+        this.disabled = true;
+        
+        // Add visual feedback
+        document.getElementById('startClockBtn').innerHTML = 'Start Clock';
+        this.innerHTML = 'Clock Stopped';
+    }
+});
+
+// Countdown Timer Functions
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+function updateCountdownDisplay() {
+    document.getElementById('countdownDisplay').textContent = formatTime(countdownTime);
+    
+    // Update progress bar
+    const progressPercent = (countdownTime / totalCountdownTime) * 100;
+    document.getElementById('timerProgress').style.width = progressPercent + '%';
+    
+    // Update status
+    if (countdownTime > 0) {
+        document.getElementById('timerStatus').textContent = 'Timer is running...';
+        document.getElementById('timerStatus').style.color = '#28a745';
+    } else {
+        document.getElementById('timerStatus').textContent = 'Time is up!';
+        document.getElementById('timerStatus').style.color = '#dc3545';
+    }
+}
+
+// Start Countdown Timer
+document.getElementById('startTimerBtn').addEventListener('click', function() {
+    const minutes = parseInt(document.getElementById('timerInput').value);
+    
+    if (minutes < 1 || minutes > 60) {
+        alert('Please enter a time between 1-60 minutes.');
+        return;
+    }
+    
+    // Clear existing timer
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+    
+    // Set up new countdown
+    countdownTime = minutes * 60;
+    totalCountdownTime = countdownTime;
+    
+    // Update button state
+    this.disabled = true;
+    this.innerHTML = 'Timer Running...';
+    
+    // Start countdown
+    countdownInterval = setInterval(() => {
+        countdownTime--;
+        updateCountdownDisplay();
+        
+        if (countdownTime <= 0) {
+            clearInterval(countdownInterval);
+            
+            // Timer finished - show alert and reset
+            setTimeout(() => {
+                alert('Time\'s up! Your study session is complete.');
+                document.getElementById('startTimerBtn').disabled = false;
+                document.getElementById('startTimerBtn').innerHTML = 'Start Timer';
+                document.getElementById('timerStatus').textContent = 'Ready to start';
+                document.getElementById('timerStatus').style.color = '#666';
+            }, 100);
+        }
+    }, 1000);
+    
+    // Initial display update
+    updateCountdownDisplay();
+});
+
+// Initialize clock display
+updateClock();
+
+// Initialize countdown display
+document.getElementById('countdownDisplay').textContent = formatTime(5 * 60);
+document.getElementById('timerProgress').style.width = '100%';
+
+// Set initial button states
+document.getElementById('stopClockBtn').disabled = true;
+
+// ===== DARK MODE FUNCTIONALITY =====
+function toggleDarkMode() {
+    const body = document.body;
+    const toggleSwitch = document.getElementById('darkModeSwitch');
+    const toggleLabel = document.querySelector('.toggle-label');
+    
+    if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        toggleSwitch.classList.remove('active');
+        toggleLabel.innerHTML = '🌙 Dark Mode';
+        localStorage.setItem('theme', 'light');
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        toggleSwitch.classList.add('active');
+        toggleLabel.innerHTML = '☀️ Light Mode';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Load saved theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    const toggleSwitch = document.getElementById('darkModeSwitch');
+    const toggleLabel = document.querySelector('.toggle-label');
+    
+    if (savedTheme === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        toggleSwitch.classList.add('active');
+        toggleLabel.innerHTML = '☀️ Light Mode';
+    }
+});
+</script>
+</body>
+</html>
