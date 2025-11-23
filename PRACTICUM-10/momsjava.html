@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOM's Kitchen.</title>
+<style>
+    body{
+        background-color:#6916416f;
+        display: grid;
+        padding:50px;
+        align-items: center;
+        font-family:'Times New Roman', Times, serif;
+        animation: slideInFromLeft 0.5s ease-out;
+
+    }
+    @keyframes slideInFromLeft {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+     .div1{
+        grid-column-start: auto;   
+        background-color:gainsboro;   
+        padding: 10px;  
+        align-content: center;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        grid-template-areas:
+            "header header"
+            "menu content"
+            "footer footer";
+        grid-template-columns: 1fr 3fr;
+        gap: 5px;
+        padding: 5px;
+        animation: fadeInUp 0.8s ease-out;
+        border-radius: 5px;
+        }
+    @keyframes fadeInUp {
+        0% {
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .div2{
+        background-color: gainsboro;
+        padding: 10px;
+        border:2px solid wheat;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+        border-radius: 5px;
+    }
+    .item{
+            background-color:#EE92C2;
+            border:3px solid black;
+            padding:10px;
+            animation: bounceIn 0.6s ease-out;
+            border-radius: 5px;
+    }
+    @keyframes bounceIn {
+        0% {
+            transform: scale(0.3);
+            opacity: 0;
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    .photo{
+        display:flex;
+        background-color:#EE92C2;
+        border:3px solid black;
+        padding: 50px;
+        animation: slideInRight 0.8s ease-out 0.3s both;
+        border-radius: 5px;
+    }
+    @keyframes slideInRight {
+        0% {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    #Description{
+        padding: 15px;
+        justify-content: right;
+        display: flex;
+        align-content: center;
+        border-radius: 5px;
+    }
+    .white{
+        color:black;
+        font-size:x-large;
+    }
+    .div3{
+        grid-column-start: auto;   
+        background-color:gainsboro;   
+        padding: 10px;  
+        align-content: center;
+        justify-content: space-around;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        }
+    .menu-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, #EE92C2, #F0B9D5);
+        padding: 15px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+        animation: slideDown 0.8s ease-out;
+    }
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    .my-button{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        justify-items: center;
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeInScale 0.8s ease-out 0.4s both;
+        border-radius: 5px;
+    }
+    body {
+        padding-top: 80px;
+    }
+    @keyframes fadeInScale {
+        0% {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    .recipe-btn{
+        background: linear-gradient(45deg, #EE92C2, #F0B9D5);
+        color: black;
+        padding: 12px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        border: 2px solid black;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        animation: popIn 0.5s ease-out;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+    }
+    .recipe-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+        transition: left 0.5s;
+        border-radius: 5px;
+    }
+    .recipe-btn:hover::before {
+        left: 100%;
+    }
+    .recipe-btn:hover{
+        background: linear-gradient(45deg, #F0B9D5, #EE92C2);
+        transform: translateY(-3px) scale(1.08);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        border-radius: 5px;
+    }
+    @keyframes popIn {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        80% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    #chickenfry{
+        background-color:#EE92C2;
+        border:3px solid black;
+        padding: 10px;
+    }
+    .recipe-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        align-items: start;
+    }
+    .recipe-content{
+        font-size: x-large;   
+        font-family:'Times New Roman', Times, serif;
+    }
+    .recipe-content h3{
+        font-size: xx-large;
+    }
+    .ingredients-box, .instructions-box {
+        background-color: #F0B9D5;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 10px 0;
+        animation: slideInBox 0.2s ease-out;
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+    }
+    .ingredients-box:hover, .instructions-box:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .ingredients-box h3, .instructions-box h3 {
+        margin-top: 0;
+        color: black;
+    }
+    @keyframes slideInBox {
+        0% {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    .recipe-images img{
+        border:3px solid black;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: slideInBox 0.4s ease-out;
+    }
+    .recipe-images img:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .video{
+        grid-column: 1 / -1;
+        text-align: center; 
+        padding: 15px;
+        margin-top: 10px;
+        animation: zoomIn 0.6s ease-out 0.6s both;
+    }
+    @keyframes zoomIn {
+        0% {
+            transform: scale(0.3);
+            opacity: 0;
+        }
+        50%{
+            transform: scale(0.7);
+            opacity: 0.5;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    .container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+    }
+    .container > div.header {
+    grid-area: header;
+    text-align: center;
+    }
+    .container > div.menu {
+    grid-area: menu;
+    }
+    .container > div.content {
+    grid-area: content;
+    }
+    .container > div.footer {
+    grid-area: footer;
+    }
+</style>
+</head>
+<body>
+     <div class="div1">
+        <div class="item">
+            <h1><center><ins>MOM's KITCHEN</ins></center></h1>
+        </div>
+  </div>
+    <div class="div1">
+        <div class="item">
+            <div>
+                <h2><center>Hello. This is V.Lilly. This webpage is about my Son's favorite food.</center></h2>
+            </div>
+        </div>
+    </div>
+    <div class="div2">
+        <div class="photo">
+            <div>
+                <img src="photo.png" height="500px" width="700px">
+            </div>
+            <div id="Description">
+                <div>
+                    <h3 class="white"><strong><center>Description:<br><br>Moms kitchen is a warm and welcoming space, filled with the aroma of delicious homemade food and the gentle hum of family conversations.<br>
+                        Every meal carries a touch of care, making it a place where laughter, memories, and comfort are always on the menu.
+                        Its a haven where the simple act of cooking together brings everyone closer, celebrating love through flavors and togetherness<br></center></strong></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-bar">
+        <div class="my-button">
+            <a href="#chickenfry" class="recipe-btn"><strong>Chicken Fry</strong></a>
+            <a href="#gulabjamun" class="recipe-btn"><strong>Gulab Jamun</strong></a>
+            <a href="#mangolassi" class="recipe-btn"><strong>Mango Lassi</strong></a>
+            <a href="#chickencutlet" class="recipe-btn"><strong>Chicken Cutlet</strong></a>
+        </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="chickenfry">
+            <h1 class="white"><center><ins><strong>Chicken Fry </strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <div class="ingredients-box">
+                        <h3><ins>Ingredients:</ins></h3>
+                        <ul>
+                            <li>500g chicken pieces</li>
+                            <li>1 cup buttermilk</li>
+                            <li>1 cup all-purpose flour</li>
+                            <li>1 tsp paprika</li>
+                            <li>1 tsp garlic powder</li>
+                            <li>Salt and pepper to taste</li>
+                            <li>Oil for frying</li>
+                        </ul>
+                    </div>
+                    <div class="instructions-box">
+                        <h3><ins>Instructions:</ins></h3>
+                        <ol>
+                            <li>Marinate the chicken in buttermilk for at least 1 hour.</li>
+                            <li>In a bowl, mix flour, paprika, garlic powder, salt, and pepper.</li>
+                            <li>Heat oil in a deep fryer or large skillet.</li>
+                            <li>Dredge the marinated chicken in the flour mixture.</li>
+                            <li>Fry the chicken until golden brown and cooked through, about 10-12 minutes.</li>
+                            <li>Drain on paper towels and serve hot.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="chickenfry.png" alt="Chicken Fry" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/BjbPZQJP7uc?si=7gTSOYl0OVhARW-Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="gulabjamun">
+            <h1 class="white"><center><ins><strong>Gulab Jamun</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <div class="ingredients-box">
+                        <h3><ins>Ingredients:</ins></h3>
+                        <ul>
+                            <li>1 cup milk powder</li>
+                            <li>1/4 cup all-purpose flour</li>
+                            <li>1/4 cup ghee (clarified butter)</li>
+                            <li>1/2 cup milk</li>
+                            <li>2 cups sugar</li>
+                            <li>2 cups water</li>
+                            <li>1/2 tsp cardamom powder</li>
+                            <li>Oil for frying</li>
+                        </ul>
+                    </div>
+                    <div class="instructions-box">
+                        <h3><ins>Instructions:</ins></h3>
+                        <ol>
+                            <li>In a bowl, mix milk powder, flour, and ghee. Add milk gradually to form a soft dough.</li>
+                            <li>Divide the dough into small balls, ensuring there are no cracks.</li>
+                            <li>In a pan, combine sugar and water. Bring to a boil and add cardamom powder. Simmer for 5 minutes.</li>
+                            <li>Heat oil in a deep fryer or large skillet.</li>
+                            <li>Fry the dough balls on medium heat until golden brown.</li>
+                            <li>Drain and immediately soak them in the warm sugar syrup for at least 30 minutes.</li>
+                            <li>Serve warm or at room temperature.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="gulabjamun.png" alt="Gulab Jamun" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/J3O0ZEJYLFQ?si=uJW-N1BLoJbl-FuY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+    </div>
+    <div class="div1">
+        <div class="item" id="mangolassi">
+            <h1 class="white"><center><ins><strong>Mango Lassi</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <div class="ingredients-box">
+                        <h3><ins>Ingredients:</ins></h3>
+                        <ul>
+                            <li>2 ripe mangoes, peeled and chopped</li>
+                            <li>2 cups plain yogurt</li>
+                            <li>1/2 cup milk</li>
+                            <li>2-3 tbsp sugar (adjust to taste)</li>
+                            <li>A pinch of cardamom powder (optional)</li>
+                            <li>Ice cubes (optional)</li>
+                        </ul>
+                    </div>
+                    <div class="instructions-box">
+                        <h3><ins>Instructions:</ins></h3>
+                        <ol>
+                            <li>In a blender, combine chopped mangoes, yogurt, milk, sugar, and cardamom powder.</li>
+                            <li>Blend until smooth and creamy.</li>
+                            <li>If desired, add ice cubes and blend again for a chilled lassi.</li>
+                            <li>Pour into glasses and serve immediately.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="mangolassi.png" alt="Mango Lassi" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xqir4h6rYJw?si=cYbNYjn829mRPz5w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+    </div>                
+    <div class="div1">
+        <div class="item" id="chickencutlet">
+            <h1 class="white"><center><ins><strong>Chicken Cutlet</strong></ins></center></h1>
+            <div class="recipe-grid">
+                <div class="recipe-content" class="white">
+                    <div class="ingredients-box">
+                        <h3><ins>Ingredients:</ins></h3>
+                        <ul>
+                            <li>500g minced chicken</li>
+                            <li>1 onion, finely chopped</li>
+                            <li>2 green chilies, finely chopped</li>
+                            <li>1 tsp ginger-garlic paste</li>
+                            <li>1/2 cup bread crumbs</li>
+                            <li>1 egg, beaten</li>
+                            <li>Salt and pepper to taste</li>
+                            <li>Oil for frying</li>
+                        </ul>
+                    </div>
+                    <div class="instructions-box">
+                        <h3><ins>Instructions:</ins></h3>
+                        <ol>
+                            <li>In a bowl, combine minced chicken, onion, green chilies, ginger-garlic paste, salt, and pepper.</li>
+                            <li>Shape the mixture into small cutlets.</li>
+                            <li>Dip each cutlet in the beaten egg, then coat with bread crumbs.</li>
+                            <li>Heat oil in a skillet over medium heat.</li>
+                            <li>Fry the cutlets until golden brown and cooked through, about 4-5 minutes per side.</li>
+                            <li>Drain on paper towels and serve hot with chutney or sauce.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="recipe-images" align="right">
+                    <img src="chickencutlets.png" alt="Chicken Cutlet" width="500px" height="500px">
+                </div>
+            </div>
+            <div class="video">
+                <h2><strong>Watch the Recipe Video:</strong></h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1Saka-LY_hE?si=h7pwkCB5gQ7g45Y1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+    </div>
+    <div class="div1">
+        <div class="item" align="center">
+            <h2><strong>Want to share your feedback?</strong></h2>
+            <a href="formjava.html" class="recipe-btn"><strong>Give Feedback</strong></a>
+        </div>
+    </div>
+</body>
+</html>
