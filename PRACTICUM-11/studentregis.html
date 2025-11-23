@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Workshop Registration</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e9ecef;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input:focus, select:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error.show {
+            display: block;
+        }
+        
+        .input-error {
+            border-color: #e74c3c !important;
+        }
+        
+        .submit-btn {
+            background: #4a90e2;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .submit-btn:hover {
+            background: #357abd;
+        }
+        
+        .submit-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Technical Workshop Registration</h1>
+        
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="name">What's your name? *</label>
+                <input type="text" id="name" name="name" placeholder="Your full name">
+                <div class="error" id="nameError">Please tell us your name</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+                <div class="error" id="emailError">We need a valid email to contact you</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">How old are you? *</label>
+                <input type="number" id="age" name="age" placeholder="Your age" min="18" max="60">
+                <div class="error" id="ageError">Age should be between 18 and 60</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="1234567890">
+                <div class="error" id="phoneError">Please enter a 10-digit phone number</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Department *</label>
+                <select id="department" name="department">
+                    <option value="">Select your department</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Electronics">Electronics & Communication</option>
+                    <option value="Mechanical">Mechanical Engineering</option>
+                    <option value="Civil">Civil Engineering</option>
+                    <option value="Electrical">Electrical Engineering</option>
+                    <option value="Chemical">Chemical Engineering</option>
+                    <option value="Biotechnology">Biotechnology</option>
+                </select>
+                <div class="error" id="departmentError">Please select your department</div>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">Sign Me Up!</button>
+        </form>
+        
+        <div class="success" id="successMessage">
+            Great! You're all set. We'll send you the workshop details soon.
+        </div>
+    </div>
+
+    <script>
+        // Get form elements using DOM methods
+        const form = document.getElementById('registrationForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const ageInput = document.getElementById('age');
+        const phoneInput = document.getElementById('phone');
+        const departmentSelect = document.getElementById('department');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        // Validation functions
+        function validateName() {
+            const name = nameInput.value.trim();
+            const nameError = document.getElementById('nameError');
+            
+            if (name === '') {
+                showError(nameInput, nameError);
+                return false;
+            } else {
+                hideError(nameInput, nameError);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                showError(emailInput, emailError);
+                return false;
+            } else {
+                hideError(emailInput, emailError);
+                return true;
+            }
+        }
+
+        function validateAge() {
+            const age = parseInt(ageInput.value);
+            const ageError = document.getElementById('ageError');
+            
+            if (isNaN(age) || age < 18 || age > 60) {
+                showError(ageInput, ageError);
+                return false;
+            } else {
+                hideError(ageInput, ageError);
+                return true;
+            }
+        }
+
+        function validatePhone() {
+            const phone = phoneInput.value.trim();
+            const phoneError = document.getElementById('phoneError');
+            const phoneRegex = /^\d{10}$/;
+            
+            if (!phoneRegex.test(phone)) {
+                showError(phoneInput, phoneError);
+                return false;
+            } else {
+                hideError(phoneInput, phoneError);
+                return true;
+            }
+        }
+
+        function validateDepartment() {
+            const department = departmentSelect.value;
+            const departmentError = document.getElementById('departmentError');
+            
+            if (department === '') {
+                showError(departmentSelect, departmentError);
+                return false;
+            } else {
+                hideError(departmentSelect, departmentError);
+                return true;
+            }
+        }
+
+        function showError(input, errorElement) {
+            input.classList.add('input-error');
+            errorElement.classList.add('show');
+        }
+
+        function hideError(input, errorElement) {
+            input.classList.remove('input-error');
+            errorElement.classList.remove('show');
+        }
+
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        ageInput.addEventListener('blur', validateAge);
+        phoneInput.addEventListener('blur', validatePhone);
+        departmentSelect.addEventListener('blur', validateDepartment);
+
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isAgeValid = validateAge();
+            const isPhoneValid = validatePhone();
+            const isDepartmentValid = validateDepartment();
+            
+            if (isNameValid && isEmailValid && isAgeValid && isPhoneValid && isDepartmentValid) {
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                console.log('Form submitted successfully with data:', {
+                    name: nameInput.value,
+                    email: emailInput.value,
+                    age: ageInput.value,
+                    phone: phoneInput.value,
+                    department: departmentSelect.value
+                });
+            } else {
+                console.log('Form submission prevented due to validation errors');
+            }
+        });
+
+        nameInput.addEventListener('input', function() {
+            if (nameInput.value.trim() !== '') {
+                hideError(nameInput, document.getElementById('nameError'));
+            }
+        });
+
+        phoneInput.addEventListener('input', function() {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            if (phoneInput.value.length === 10) {
+                validatePhone();
+            }
+        });
+    </script>
+</body>
+</html>
