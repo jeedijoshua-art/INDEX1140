@@ -6,604 +6,1031 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Technology Portfolio - URK25CS1140</title>
     <link rel="icon" href="https://i.postimg.cc/fTKQ3mJ1/donut.png">
+
+    <!-- Added Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #020617;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.4);
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --border: rgba(255, 255, 255, 0.08);
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Glows */
+        .background-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .glow {
+            position: absolute;
+            width: 60vh;
+            height: 60vh;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+
+        .glow-1 {
+            top: -20vh;
+            left: -10vw;
+        }
+
+        .glow-2 {
+            bottom: -20vh;
+            right: -10vw;
+            animation-delay: -5s;
+        }
+
+        .glow-3 {
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+            animation-duration: 30s;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem 2rem;
+        }
+
+        /* Header */
+        .main-header {
+            padding: 5rem 0 3rem 0;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 1rem 0;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .header-divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 2.5rem 0;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            backdrop-filter: blur(10px);
+        }
+
+        .student-name {
+            font-size: 1.6rem;
+            color: var(--text-main);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .reg-no {
+            font-size: 1rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            font-weight: 600;
+        }
+
+        /* Hide manual breaks */
+        .practicums-wrapper br {
+            display: none;
+        }
+
+        /* Note element */
+        h3 {
+            text-align: center;
+            padding: 1.5rem;
+            color: #fca5a5;
+            font-weight: 400;
+            border: 1px dashed rgba(252, 165, 165, 0.3);
+            border-radius: 16px;
+            margin: 3rem 0;
+            background: rgba(252, 165, 165, 0.03);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Tables (Practicum Cards) */
+        table {
+            width: 100% !important;
+            border: 1px solid var(--border) !important;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out both;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+        }
+
+        table:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Add stagger animation delays to tables */
+        table:nth-of-type(1) {
+            animation-delay: 0.1s;
+        }
+
+        table:nth-of-type(2) {
+            animation-delay: 0.2s;
+        }
+
+        table:nth-of-type(3) {
+            animation-delay: 0.3s;
+        }
+
+        table:nth-of-type(4) {
+            animation-delay: 0.4s;
+        }
+
+        table:nth-of-type(5) {
+            animation-delay: 0.5s;
+        }
+
+        table:nth-of-type(n+6) {
+            animation-delay: 0.2s;
+        }
+
+        /* Table Heading row (Practicum Title) */
+        table tr:first-child td {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-bottom: 1px solid var(--border) !important;
+            padding: 1.5rem 2rem !important;
+        }
+
+        table tr:first-child center {
+            text-align: left;
+            display: block;
+        }
+
+        table tr:first-child h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        table tr:first-child h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 1.4rem;
+            background: var(--accent);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        /* Table Headers */
+        table tr:nth-child(2) th {
+            background: rgba(0, 0, 0, 0.2) !important;
+            color: var(--text-muted) !important;
+            font-weight: 500 !important;
+            text-transform: uppercase !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 1px !important;
+            padding: 1rem 2rem !important;
+            border-bottom: 1px solid var(--border) !important;
+            border-right: none !important;
+            border-left: none !important;
+            border-top: none !important;
+            text-align: left;
+        }
+
+        /* Table Data */
+        table td {
+            padding: 1.2rem 2rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03) !important;
+            border-right: none !important;
+            border-left: none !important;
+            border-top: none !important;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        table tr:last-child td {
+            border-bottom: none !important;
+        }
+
+        table tr:hover:not(:first-child):not(:nth-child(2)) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* First column - Type */
+        table td:first-child {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Links */
+        a {
+            color: var(--text-muted);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        a::before {
+            content: '↗';
+            font-size: 0.8em;
+            opacity: 0;
+            transform: translate(-5px, 5px);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        a:hover::before {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Status Column - "Complete" */
+        table td:last-child {
+            font-weight: 500;
+            color: var(--success) !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-header h1 {
+                font-size: 2rem;
+            }
+
+            table th,
+            table td {
+                padding: 1rem !important;
+            }
+
+            table tr:first-child h2 {
+                font-size: 1.2rem;
+            }
+
+            .course-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
-<body bgcolor="EEF4D4">
-    <center>
-        <h1>Karunya Institute of Technology & Sciences</h1>
-        <h2>School of Computer Science & Technology</h2>
-        <h2>Division of Computer Science & Engineering</h2>
-        <hr width="80%">
-        <h2>Course: 25CS208 WEBTECHNOLOGY (Batch URK25 Batch 3)</h2>
-        <h2>Academic Year: 2025-26 Semester: 1</h2>
-        <h2>Jeedi Joshua Chris Vimal (Regno: URK25CS1140)</h2>
-    </center>
+<body>
+    <!-- Background Glow Effects -->
+    <div class="background-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
 
-    <br><br>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <h1>Karunya Institute of Technology & Sciences</h1>
+                <p class="subtitle">School of Computer Science & Technology<br>Division of Computer Science &
+                    Engineering</p>
+                <hr class="header-divider">
+                <div class="course-info">
+                    <span class="badge">Course: 25CS208 WEBTECHNOLOGY (Batch URK25 Batch 3)</span>
+                    <span class="badge">Academic Year: 2025-26 Semester: 1</span>
+                </div>
+                <h2 class="student-name">
+                    Jeedi Joshua Chris Vimal
+                    <span class="reg-no">URK25CS1140</span>
+                </h2>
+            </div>
+        </header>
 
-    <!-- Practicum 1 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-1: Basic HTML</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Web Page for Lilly's Kitchen</td>
-            <td><a href="P1/Lilly'sKitchen.html">Lilly's Kitchen</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Web Page for Karunyamapnavigator</td>
-            <td><a href="P1/Karunyamapnavigator.html">Karunyamapnavigator</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Web Page for Resume</td>
-            <td><a href="P1/MyResume.html">My Resume</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P1/Practicum-1.pdf">Documentation-1</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <!--<td colspan="4"></td>>
-                <strong>Essentials & Semantic Tags Used:</strong>
-                <ul>
-                    <li>&lt;Doctype&gt;, &lt;html&gt;, &lt;head&gt;, &lt;title&gt;, &lt;meta&gt;, &lt;link&gt; (favicon)</li>
-                    <li>&lt;h1&gt; to &lt;h2&gt;, &lt;img&gt;, &lt;a&gt;, &lt;p&gt;, &lt;table&gt;, &lt;ul&gt;, &lt;ol&gt;</li>
-                    <li>&lt;header&gt;, &lt;footer&gt;, &lt;section&gt;, &lt;strong&gt;, &lt;ins&gt;</li>
-                </ul>
-            </td>
-        </tr>-->
-    </table>
+        <main class="practicums-wrapper">
 
-    <br><br>
+            <!-- Practicum 1 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-1: Basic HTML</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Web Page for Lilly's Kitchen</td>
+                    <td><a href="P1/Lilly'sKitchen.html">Lilly's Kitchen</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Web Page for Karunyamapnavigator</td>
+                    <td><a href="P1/Karunyamapnavigator.html">Karunyamapnavigator</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Web Page for Resume</td>
+                    <td><a href="P1/MyResume.html">My Resume</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P1/Practicum-1.pdf">Documentation-1</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <!--<td colspan="4"></td>>
+                    <strong>Essentials & Semantic Tags Used:</strong>
+                    <ul>
+                        <li>&lt;Doctype&gt;, &lt;html&gt;, &lt;head&gt;, &lt;title&gt;, &lt;meta&gt;, &lt;link&gt; (favicon)</li>
+                        <li>&lt;h1&gt; to &lt;h2&gt;, &lt;img&gt;, &lt;a&gt;, &lt;p&gt;, &lt;table&gt;, &lt;ul&gt;, &lt;ol&gt;</li>
+                        <li>&lt;header&gt;, &lt;footer&gt;, &lt;section&gt;, &lt;strong&gt;, &lt;ins&gt;</li>
+                    </ul>
+                </td>
+            </tr>-->
+            </table>
 
-    <!-- Practicum 2 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-2: Multimedia Elements</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Lilly's Kitchen (With Multimedia stuff)</td>
-            <td><a href="P2/lillykitchen.html">Lilykitchen</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Karunya Map Navigator (With Multimedia stuff)</td>
-            <td><a href="P2/karunyamap.html">All Praise and Glory</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P2/Practicum-2.pages.pdf">Documentation-2</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+            <br><br>
 
-    <br><br>
+            <!-- Practicum 2 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-2: Multimedia Elements</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Lilly's Kitchen (With Multimedia stuff)</td>
+                    <td><a href="P2/lillykitchen.html">Lilykitchen</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Karunya Map Navigator (With Multimedia stuff)</td>
+                    <td><a href="P2/karunyamap.html">All Praise and Glory</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P2/Practicum-2.pages.pdf">Documentation-2</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <!-- Practicum 3 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-3: Forms</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>Static Webpage</strong></td>
-            <td>Lilly's Kitchen (With forms)</td>
-            <td><a href="P3/momswithforms.html">MOMSWITHFORMS</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Signup Webpage</strong></td>
-            <td>Sign up webpage</td>
-            <td><a href="P3/signup.html">Signup</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Thank You Webpage</strong></td>
-            <td>Thank you webpage</td>
-            <td><a href="P3/Thankyou.html">Thankyou</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
 
-        <tr>
-            <td><strong>Karunyamapnavigator</strong></td>
-            <td>Karuna Form webpage</td>
-            <td><a href="P3/karuna.html">KarunyNa Form</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P3/Practicum-3.pdf">Documentation-3</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+            <!-- Practicum 3 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-3: Forms</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>Static Webpage</strong></td>
+                    <td>Lilly's Kitchen (With forms)</td>
+                    <td><a href="P3/momswithforms.html">MOMSWITHFORMS</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Signup Webpage</strong></td>
+                    <td>Sign up webpage</td>
+                    <td><a href="P3/signup.html">Signup</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Thank You Webpage</strong></td>
+                    <td>Thank you webpage</td>
+                    <td><a href="P3/Thankyou.html">Thankyou</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
+                <tr>
+                    <td><strong>Karunyamapnavigator</strong></td>
+                    <td>Karuna Form webpage</td>
+                    <td><a href="P3/karuna.html">KarunyNa Form</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P3/Practicum-3.pdf">Documentation-3</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <!-- Practicum 4 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-4: CSS Basics</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Demo Page</strong></td>
-            <td>Web Page for CSS Demo Page</td>
-            <td><a href="P4/Demo.html">CSSDemoPage</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Mom's Kitchen (CSS)</strong></td>
-            <td>Webpage for Mom's Kitchen with forms and CSS</td>
-            <td><a href="P4/momswithforms.html">MOMSWITHFORMS</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
 
-        <tr>
-            <td><strong>Life Given Karunya</strong></td>
-            <td>Webpage For Karunya CSS</td>
-            <td><a href="P4/karuna.html">Life To Karunyas</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P4/Practicum-4.pdf">Documentation-4</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+            <!-- Practicum 4 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-4: CSS Basics</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Demo Page</strong></td>
+                    <td>Web Page for CSS Demo Page</td>
+                    <td><a href="P4/Demo.html">CSSDemoPage</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Mom's Kitchen (CSS)</strong></td>
+                    <td>Webpage for Mom's Kitchen with forms and CSS</td>
+                    <td><a href="P4/momswithforms.html">MOMSWITHFORMS</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
+                <tr>
+                    <td><strong>Life Given Karunya</strong></td>
+                    <td>Webpage For Karunya CSS</td>
+                    <td><a href="P4/karuna.html">Life To Karunyas</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P4/Practicum-4.pdf">Documentation-4</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <!-- Practicum 5 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-5: CSS Positioning</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Positioning</strong></td>
-            <td>Web Page for CSS Positioning</td>
-            <td><a href="P5/cssposition.html">Position</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>MoM's Kitchen (CSS)</strong></td>
-            <td>Webpage for MoM's Kitchen with forms and CSS</td>
-            <td><a href="P5/lillyposition.html">Momswithposition</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (CSS)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="P5/CSSkarunya.html">KarunyaCSS</a></td>
-            <td>Complete</td>
-        </tr>
+            <!-- Practicum 5 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-5: CSS Positioning</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Positioning</strong></td>
+                    <td>Web Page for CSS Positioning</td>
+                    <td><a href="P5/cssposition.html">Position</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>MoM's Kitchen (CSS)</strong></td>
+                    <td>Webpage for MoM's Kitchen with forms and CSS</td>
+                    <td><a href="P5/lillyposition.html">Momswithposition</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P5/Practicum-5.pdf">Documentation-5</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (CSS)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="P5/CSSkarunya.html">KarunyaCSS</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
-    <!-- Practicum 6 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-6: Flex Box</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Positioning</strong></td>
-            <td>Web Page for CSS Flexing</td>
-            <td><a href="P6/Index.html">Flexing.</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Mom's Kitchen (CSS)</strong></td>
-            <td>Webpage for Mom's Kitchen with forms and CSS</td>
-            <td><a href="P6/lilly.html">MomFlex.</a></td>
-            <td>Complete</td>
-        </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P5/Practicum-5.pdf">Documentation-5</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (CSS)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="P6/Flexkarunya.html">Karunya Flex. </a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
+            <!-- Practicum 6 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-6: Flex Box</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Positioning</strong></td>
+                    <td>Web Page for CSS Flexing</td>
+                    <td><a href="P6/Index.html">Flexing.</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Mom's Kitchen (CSS)</strong></td>
+                    <td>Webpage for Mom's Kitchen with forms and CSS</td>
+                    <td><a href="P6/lilly.html">MomFlex.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P6/Practicum-6.pdf">Documentation-6</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (CSS)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="P6/Flexkarunya.html">Karunya Flex. </a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
-    <!-- Practicum 7 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-7: Grid Box</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Grid Box</strong></td>
-            <td>Web Page for CSS Grid</td>
-            <td><a href="P7/demogrid.html">Griding.</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Lilly's Kitchen (CSS)</strong></td>
-            <td>Webpage for Mom's Kitchen with CSS Grid. </td>
-            <td><a href="P7/lillygrid.html">MoMGrid.</a></td>
-            <td>Complete</td>
-        </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P6/Practicum-6.pdf">Documentation-6</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (CSS)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="P7/kgrid.html">Karunya Gird.</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
+            <!-- Practicum 7 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-7: Grid Box</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Grid Box</strong></td>
+                    <td>Web Page for CSS Grid</td>
+                    <td><a href="P7/demogrid.html">Griding.</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Lilly's Kitchen (CSS)</strong></td>
+                    <td>Webpage for Mom's Kitchen with CSS Grid. </td>
+                    <td><a href="P7/lillygrid.html">MoMGrid.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P7/Practicum-7.pdf">Documentation-7</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (CSS)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="P7/kgrid.html">Karunya Gird.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P7/Practicum-7.pdf">Documentation-7</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <!-- Practicum 8 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-8: Screen Orientation</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>Screen Orientation</strong></td>
-            <td>Web Page for CSS Orientating</td>
-            <td><a href="P8/demori.html">Orientating.</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Mom's Kitchen (CSS)</strong></td>
-            <td>Webpage for MOm's Kitchen with forms and CSS</td>
-            <td><a href="P8/kitchen.html">Mom Orientating.</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (CSS)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="P8/kori.html">Karunya Orientating.</a></td>
-            <td>Complete</td>
-        </tr>
+            <!-- Practicum 8 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-8: Screen Orientation</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>Screen Orientation</strong></td>
+                    <td>Web Page for CSS Orientating</td>
+                    <td><a href="P8/demori.html">Orientating.</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Mom's Kitchen (CSS)</strong></td>
+                    <td>Webpage for MOm's Kitchen with forms and CSS</td>
+                    <td><a href="P8/kitchen.html">Mom Orientating.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P8/Practicum-8.pdf">Documentation-8</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (CSS)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="P8/kori.html">Karunya Orientating.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <br><br>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P8/Practicum-8.pdf">Documentation-8</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <!-- Practicum 9 -->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-9: Animations</h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Animations</strong></td>
-            <td>Web Page for CSS Animations</td>
-            <td><a href="P9/animation-demo.html">Animating.</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Mom's Kitchen (CSS)</strong></td>
-            <td>Webpage for Mom's Kitchen with forms and CSS</td>
-            <td><a href="P9/lillyanimate.html">MoM Animation.</a></td>
-            <td>Complete</td>
-        </tr>
+            <br><br>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (CSS)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="P9/kanimate.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
+            <!-- Practicum 9 -->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-9: Animations</h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Animations</strong></td>
+                    <td>Web Page for CSS Animations</td>
+                    <td><a href="P9/animation-demo.html">Animating.</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Mom's Kitchen (CSS)</strong></td>
+                    <td>Webpage for Mom's Kitchen with forms and CSS</td>
+                    <td><a href="P9/lillyanimate.html">MoM Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Documentation</strong></td>
-            <td>Documentation link</td>
-            <td><a href="P9/Practicum-9.pdf">Documentation-9</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
-    <h3>From here no need for Documentations</h3>
-    <!--10-->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-10: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>MOM's Kitchen</strong></td>
-            <td>Web Page for Java</td>
-            <td><a href="PRACTICUM-10/momsjava.html">Mom'sjava.</a></td>
-            <td>Complete</td>
-        </tr>
-        <tr>
-            <td><strong>Kitchen's Form</strong></td>
-            <td>Webpage for Kitchen's Forms with </td>
-            <td><a href="PRACTICUM-10/formjava.html">KitchenForm</a></td>
-            <td>Complete</td>
-        </tr>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (CSS)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="P9/kanimate.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="PRACTICUM-10/karunyaform.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
-    <!--11-->
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-11: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
+                <tr>
+                    <td><strong>Documentation</strong></td>
+                    <td>Documentation link</td>
+                    <td><a href="P9/Practicum-9.pdf">Documentation-9</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
+            <h3>From here no need for Documentations</h3>
+            <!--10-->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-10: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>MOM's Kitchen</strong></td>
+                    <td>Web Page for Java</td>
+                    <td><a href="PRACTICUM-10/momsjava.html">Mom'sjava.</a></td>
+                    <td>Complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Kitchen's Form</strong></td>
+                    <td>Webpage for Kitchen's Forms with </td>
+                    <td><a href="PRACTICUM-10/formjava.html">KitchenForm</a></td>
+                    <td>Complete</td>
+                </tr>
 
-        <tr>
-            <td><strong>Karunya Map Navigator (JavaScript)</strong></td>
-            <td>Webpage for Mom's Kitchen with JavaScript</td>
-            <td><a href="PRACTICUM-11/karunya11.html">Karunyamapnavigator.</a></td>
-            <td>Complete</td>
-        </tr>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="PRACTICUM-10/karunyaform.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
+            <!--11-->
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-11: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
 
-        <tr>
-            <td><strong>Karunya Map Navigator Form (Java JavaScript)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="PRACTICUM-11/studentregis.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
-    <!--12-->
+                <tr>
+                    <td><strong>Karunya Map Navigator (JavaScript)</strong></td>
+                    <td>Webpage for Mom's Kitchen with JavaScript</td>
+                    <td><a href="PRACTICUM-11/karunya11.html">Karunyamapnavigator.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-12: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
+                <tr>
+                    <td><strong>Karunya Map Navigator Form (Java JavaScript)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="PRACTICUM-11/studentregis.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
+            <!--12-->
 
-        <tr>
-            <td><strong>Mom's Kitchen (JavaScript)</strong></td>
-            <td>Webpage for Mom's Kitchen with JavaScript.</td>
-            <td><a href="PRACTICUM-12/12form.html">MoM Animation.</a></td>
-            <td>Complete</td>
-        </tr>
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-12: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="PRACTICUM-12/12karunya.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
+                <tr>
+                    <td><strong>Mom's Kitchen (JavaScript)</strong></td>
+                    <td>Webpage for Mom's Kitchen with JavaScript.</td>
+                    <td><a href="PRACTICUM-12/12form.html">MoM Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    </table>
+                <tr>
+                    <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="PRACTICUM-12/12karunya.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <!--13-->
+            </table>
 
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-13: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
+            <!--13-->
 
-        <tr>
-            <td><strong>Mom's Kitchen (JavaScript)</strong></td>
-            <td>Webpage for Mom's Kitchen with forms and JavaScript</td>
-            <td><a href="PRACTICUM-13/kitchen13.html">MoM Animation.</a></td>
-            <td>Complete</td>
-        </tr>
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-13: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="PRACTICUM-13/karunya13.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+                <tr>
+                    <td><strong>Mom's Kitchen (JavaScript)</strong></td>
+                    <td>Webpage for Mom's Kitchen with forms and JavaScript</td>
+                    <td><a href="PRACTICUM-13/kitchen13.html">MoM Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
 
-    <!--14-->
+                <tr>
+                    <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="PRACTICUM-13/karunya13.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-14: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
+            <!--14-->
 
-        <tr>
-            <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
-            <td>Webpage for Karunya Map Navigator</td>
-            <td><a href="PRACTICUM-14/14karunya.html">Karunya Animation.</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-14: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
 
-    <!--15-->
+                <tr>
+                    <td><strong>Karunya Map Navigator. (JavaScript)</strong></td>
+                    <td>Webpage for Karunya Map Navigator</td>
+                    <td><a href="PRACTICUM-14/14karunya.html">Karunya Animation.</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
 
-    <table width="100%" border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <td colspan="4">
-                <center>
-                    <h2>Practicum-15: </h2>
-                </center>
-            </td>
-        </tr>
-        <tr>
-            <th width="20%">Project Type</th>
-            <th width="40%">Description</th>
-            <th width="20%">Link</th>
-            <th width="20%">Status</th>
-        </tr>
-        <tr>
-            <td><strong>CSS Animations</strong></td>
-            <td>Web Page for CSS Animations</td>
-            <td><a href="PRACTICUM-15/15karunya.html">Animating.</a></td>
-            <td>Complete</td>
-        </tr>
-    </table>
+            <!--15-->
+
+            <table width="100%" border="1" cellpadding="10" cellspacing="0">
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <h2>Practicum-15: </h2>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <th width="20%">Project Type</th>
+                    <th width="40%">Description</th>
+                    <th width="20%">Link</th>
+                    <th width="20%">Status</th>
+                </tr>
+                <tr>
+                    <td><strong>CSS Animations</strong></td>
+                    <td>Web Page for CSS Animations</td>
+                    <td><a href="PRACTICUM-15/15karunya.html">Animating.</a></td>
+                    <td>Complete</td>
+                </tr>
+            </table>
+        </main> <!-- end practicums-wrapper -->
+    </div> <!-- end container -->
 </body>
 
 </html>
